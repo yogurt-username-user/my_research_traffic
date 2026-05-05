@@ -280,5 +280,5 @@
         <detExit lane="71160126#0_1" pos="-6.50" friendlyPos="1"/>
     </entryExitDetector>
     <!--Edgedata-->
-    <edgeData id="Edgedata" file="edgedata8.xml" period="180" vTypes="passenger"/>
+    <laneData id="Lanedata" file="edgedata8.xml" period="180" vTypes="passenger"/>
 </additional>
