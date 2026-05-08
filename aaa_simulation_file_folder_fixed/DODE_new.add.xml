@@ -179,11 +179,11 @@
     <busStop id="5033804237" name="Central" lane="217198063.22_0" startPos="10.06" endPos="35.06" friendlyPos="true" lines="15"/>
     <busStop id="5133221036" name="Hardplatz" lane="401789585#0_0" startPos="29.21" endPos="54.21" friendlyPos="true" lines="8"/>
     <busStop id="5276753819" name="Bahnhof Hardbrücke" lane="401789584_0" startPos="102.49" endPos="127.49" friendlyPos="true" lines="8"/>
-    <busStop id="5276753820" name="Bahnhof Hardbrücke" lane="401789585#1_0" startPos="369.83" endPos="394.83" friendlyPos="true" lines="8"/>
+    <busStop id="5276753820" name="Bahnhof Hardbrücke" lane="401789585#1_0" startPos="120.83" endPos="150.83" friendlyPos="true" lines="8"/>
     <busStop id="81058533" name="Rennweg" lane="49991796.122_0" startPos="29.52" endPos="54.52" friendlyPos="true" lines="13 17 7 6 11"/>
     <busStop id="94583344" name="Central" lane="217408193#1_0" startPos="22.50" endPos="57.50" friendlyPos="true" lines="4"/>
     <!-- Detectors -->
-    <entryExitDetector id="E3_output" pos="0.00,0.00" period="180.00" file="2DODE_E3_output_fixed.xml" vTypes="passenger" expectArrival="1">
+    <entryExitDetector id="E3_output" pos="0.00,0.00" period="180.00" file="DODE_E3_output_fixed{number}.xml" vTypes="passenger" expectArrival="1">
         <detEntry lane="120613501_0" pos="7.50" friendlyPos="1"/>
         <detEntry lane="120613501_1" pos="7.50" friendlyPos="1"/>
         <detEntry lane="27410107#0_1" pos="7.50" friendlyPos="1"/>
@@ -280,5 +280,5 @@
         <detExit lane="71160126#0_1" pos="-6.50" friendlyPos="1"/>
     </entryExitDetector>
     <!--Edgedata-->
-    <edgeData id="Edgedata" file="edgedata.xml" period="900"/>
+    <laneData id="Lanedata" file="edgedata{number}.xml" period="180" vTypes="passenger"/>
 </additional>

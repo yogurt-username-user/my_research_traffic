@@ -8,11 +8,13 @@
     <input>
         <net-file value="merged2.net.xml"/>
         <route-files value="merged.rou.xml"/>
-        <additional-files value="DODE_new.add.xml"/>
+        <additional-files value="DODE_new{number}.add.xml"/>
     </input>
 
     <output>
-        <tripinfo-output value="tripinfo_fixed_pt.xml"/>
+        <tripinfo-output value="tripinfo_fixed_pt{number}.xml"/>
+        <tripinfo-output.write-unfinished value="true" />
+        <tripinfo-output.write-undeparted value="true" />
     </output>
 
     <time>
