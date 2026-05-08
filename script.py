@@ -1,54 +1,60 @@
 import subprocess
 import pandas as pd
 import os
+
 df_E3=pd.DataFrame()
 df_tripinfo=pd.DataFrame()
 df_edgedata=pd.DataFrame()
 processes=[]
+
 sim_folder = "aaa_simulation_file_folder_fixed"
 sim_dir_abs = os.path.abspath(sim_folder)
+
 cooldown_list=[5,30,60,90,120]
-red_coeff_list=[0,0.25,0.5,0.75]
+red_coeff_list=[0.0,0.25,0.5,0.75]
+mode_list=["fixed", "actuated"]
 ways=["spc","nspc","spnc","nspnc"]
 
-combos=[{"num":1, "cd":0, "coeff":0, "way":"no priority" }]
+combos=[{"num":1, "cd":0, "coeff":0.0, "way":"no priority", "mode":"fixed"}, 
+        {"num":2, "cd":0, "coeff":0.0, "way":"no priority", "mode":"actuated"}]
 
-num=2
+num=3
 for coeff in red_coeff_list:
     for cd in cooldown_list:
         for way in ways:
-            combo={"num": num, "cd": cd, "coeff": coeff, "way":way}
-            combos.appen(combo)
-            num += 1
+            for mode in mode_list:
+                combo={"num": num, "cd": cd, "coeff": coeff, "way":way, "mode":mode}
+                combos.append(combo)
+                num += 1
 
-template_path = "DODE_new.add.xml"
+template_path = "aaa_simulation_file_folder_fixed/DODE_new.add.xml"
 with open(template_path, "r") as f:
     template = f.read()
 
-template_path = "DODE.sumocfg"
+template_path = "aaa_simulation_file_folder_fixed/DODE.sumocfg"
 with open(template_path, "r") as f:
     template2 = f.read()
 
 for c in combos:
+    print(c)
+    n=c['num']
     # Build the base command
     output = template.replace("{number}", str(n))
-    with open(f"DODE_new{c["num"]}.add.xml", "w") as out:
+    with open(f"aaa_simulation_file_folder_fixed/DODE_new{c['num']}.add.xml", "w") as out:
         out.write(output)
     output = template2.replace("{number}", str(n))
-    with open(f"DODE_{c["num"]}.sumocfg", "w") as out:
+    output = output.replace("{mode}", c["mode"])
+    with open(f"aaa_simulation_file_folder_fixed/DODE_{c['num']}.sumocfg", "w") as out:
         out.write(output)
     cmd = [
         "python3", "main_1.py", 
         "--number", str(c["num"]), 
         "--cooldown", str(c["cd"]), 
         "--way", str(c["way"]),
-        "--red_coeff"
+        "--red_coeff", str(c["coeff"]),
+        "--mode", str(c["mode"])
     ]
     
-    # Add all coefficients from the list to the command
-    for val in c["coeff"]:
-        cmd.append(str(val))
-
     # Launch process
     p = subprocess.Popen(cmd, cwd=sim_dir_abs)
     processes.append(p)
@@ -58,16 +64,17 @@ for p in processes:
 
 print("All processes have finished. For fixed schedule cases.")
 
-for i in range(num):
+for j in range(num-1):
+    i=j+1
     df = pd.read_csv(f"aaa_simulation_file_folder_fixed/E3_output_{i}.csv")
     df_E3 = pd.concat([df_E3, df], ignore_index=True)
-    df_E3.to_csv("DODE_E3_output_fixed.csv")
+    df_E3.to_csv("DODE_E3_output.csv")
     df = pd.read_csv(f"aaa_simulation_file_folder_fixed/tripinfo_{i}.csv")
     df_tripinfo = pd.concat([df_tripinfo, df], ignore_index=True)
-    df_tripinfo.to_csv("tripinfo_fixed.csv")
+    df_tripinfo.to_csv("tripinfo.csv")
     df = pd.read_csv(f"aaa_simulation_file_folder_fixed/edgedata_{i}.csv")
     df_edgedata = pd.concat([df_edgedata, df], ignore_index=True)
-    df_edgedata.to_csv("edgedata_fixed.csv")
+    df_edgedata.to_csv("edgedata.csv")
 
 # ## Actuated cases
 # df_E3=pd.DataFrame()

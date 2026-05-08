@@ -12,14 +12,15 @@ parser.add_argument("--number", type=int)
 parser.add_argument("--cooldown", type=float, nargs='+') 
 parser.add_argument("--red_coeff", type=float, nargs='+') 
 parser.add_argument("--way", type=str, nargs='+') 
+parser.add_argument("--mode", type=str, nargs='+')
 args = parser.parse_args()
 
 number = args.number
 cooldownTime_list = args.cooldown
 red_min_duration_coefficient_list = args.red_coeff
 way = args.way
+mode= args.mode
 
-mode = "fixed"
 strategy = "pt_priority"
 df_E3_final = pd.DataFrame()
 df_tripinfo_final = pd.DataFrame()
@@ -68,7 +69,6 @@ if way != "no priority":
 
 else:
     strategy = "pt"
-    mode="fixed"
 
     nfd_name_file_output= "DODE_E3_output_pt" 
     trips_name_file_output= "tripinfo_pt"
