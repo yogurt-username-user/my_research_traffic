@@ -26,26 +26,9 @@ for coeff in red_coeff_list:
                 combo={"num": num, "cd": cd, "coeff": coeff, "way":way, "mode":mode}
                 combos.append(combo)
                 num += 1
-
-template_path = "aaa_simulation_file_folder_fixed/DODE_new.add.xml"
-with open(template_path, "r") as f:
-    template = f.read()
-
-template_path = "aaa_simulation_file_folder_fixed/DODE.sumocfg"
-with open(template_path, "r") as f:
-    template2 = f.read()
+print(combos)
 
 for c in combos:
-    print(c)
-    n=c['num']
-    # Build the base command
-    output = template.replace("{number}", str(n))
-    with open(f"aaa_simulation_file_folder_fixed/DODE_new{c['num']}.add.xml", "w") as out:
-        out.write(output)
-    output = template2.replace("{number}", str(n))
-    output = output.replace("{mode}", c["mode"])
-    with open(f"aaa_simulation_file_folder_fixed/DODE_{c['num']}.sumocfg", "w") as out:
-        out.write(output)
     cmd = [
         "python3", "main_1.py", 
         "--number", str(c["num"]), 
@@ -62,11 +45,11 @@ for c in combos:
 for p in processes:
     p.wait()
 
-print("All processes have finished. For fixed schedule cases.")
+print("All processes have finished.")
 
 for j in range(num-1):
     i=j+1
-    df = pd.read_csv(f"aaa_simulation_file_folder_fixed/E3_output_{i}.csv")
+    df = pd.read_csv(f"aaa_simulation_file_folder_fixed/DODE_E3_output_{i}.csv")
     df_E3 = pd.concat([df_E3, df], ignore_index=True)
     df_E3.to_csv("DODE_E3_output.csv")
     df = pd.read_csv(f"aaa_simulation_file_folder_fixed/tripinfo_{i}.csv")

@@ -19,7 +19,24 @@ number = args.number
 cooldownTime_list = args.cooldown
 red_min_duration_coefficient_list = args.red_coeff
 way = args.way
-mode= args.mode
+mode= str(args.mode)
+mode=mode[2:-2]
+
+template_path = "DODE_new.add.xml"
+with open(template_path, "r") as f:
+    template = f.read()
+template_path = "DODE.sumocfg"
+with open(template_path, "r") as f:
+    template2 = f.read()
+
+output = template.replace("{number}", str(number))
+with open(f"DODE_new{number}.add.xml", "w") as out:
+    out.write(output)
+output = template2.replace("{number}", str(number))
+output = output.replace("{mode}", mode)
+with open(f"DODE_{number}.sumocfg", "w") as out:
+    out.write(output)
+
 
 strategy = "pt_priority"
 df_E3_final = pd.DataFrame()
