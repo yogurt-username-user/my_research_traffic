@@ -14,4 +14,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
-CMD ["python3", "script.py"]
+WORKDIR /usr/src/app/aaa_simulation_file_folder_fixed
+RUN mkdir -p /outputs
+ENTRYPOINT ["python3", "main_1.py"]

@@ -121,9 +121,9 @@ df_tripinfo_final = pd.concat([df_tripinfo_final, df_tripinfo_spc], ignore_index
 df_edgedata_final = pd.concat([df_edgedata_final, df_edgedata_spc], ignore_index=True)
 
 
-df_E3_final.to_csv(f"E3_output_{number}.csv", index=False)
-df_tripinfo_final.to_csv(f"tripinfo_{number}.csv", index=False)
-df_edgedata_final.to_csv(f"edgedata_{number}.csv", index=False)
+df_E3_final.to_csv(f"outputs/E3_output_{number}.csv", index=False)
+df_tripinfo_final.to_csv(f"outputs/tripinfo_{number}.csv", index=False)
+df_edgedata_final.to_csv(f"outputs/edgedata_{number}.csv", index=False)
 
 
 
