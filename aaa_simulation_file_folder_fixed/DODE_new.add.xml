@@ -281,4 +281,7 @@
     </entryExitDetector>
     <!--Edgedata-->
     <laneData id="Lanedata" file="edgedata{number}.xml" period="180" vTypes="passenger"/>
+    <timedEvent type="SaveTLSStates" source="J36" dest="tls_states_a_{number}.xml"/>
+    <timedEvent type="SaveTLSStates" source="cluster2264846650_2264846651_2264924925_2264924930_#4more" dest="tls_states_b_{number}.xml"/>
+    <timedEvent type="SaveTLSStates" source="J24" dest="tls_states_c_{number}.xml"/>
 </additional>

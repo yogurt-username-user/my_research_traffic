@@ -80,12 +80,11 @@ def cooldownTurnon(tls_cooldown_status, target_phase, next_phase_index, tlsID, p
 def nextPhase(target_phase, tlsID, phases):
     if target_phase is not None:
         traci.trafficlight.setPhase(tlsID, target_phase)
-        next_phase_index = (target_phase + 1) % len(phases)
     else:
         error(tlsID, "is broken")
-    return next_phase_index
 
-def tlsStateChange(tram, tls_cooldown_status, tram_to_tls_det_distance, red_min_duration_coefficient, prio_requests, granted_prio):
+
+def tlsStateChange(tram, tls_cooldown_status, tram_to_tls_det_distance, red_min_duration_coefficient, prio_requests, granted_prio, time_list_a, time_list_b, time_list_c):
         tlsID, tlsIndex, tram_to_tls_distance, tls_state = getTramInfo(tram)
         if tlsID and tram_to_tls_distance < tram_to_tls_det_distance: #check if the tram is next to the intersection (1.5 is just a value that worked)
             prio_requests += 1
@@ -99,10 +98,17 @@ def tlsStateChange(tram, tls_cooldown_status, tram_to_tls_det_distance, red_min_
                 else:
                     tram_index = phaseSearch(tram, tlsID)
                     target_phase, phases = phaseSearch2(tram_index, tlsID)
-                    next_phase_index = nextPhase(target_phase, tlsID, phases)
+                    next_phase_index = (target_phase + 1) % len(phases)
+                    tls_cooldown_status =  cooldownTurnon(tls_cooldown_status, target_phase, next_phase_index, tlsID, phases) 
+                    nextPhase(target_phase, tlsID, phases)
                     granted_prio += 1
-                    tls_cooldown_status =  cooldownTurnon(tls_cooldown_status, target_phase, next_phase_index, tlsID, phases)              
-        return tls_cooldown_status, prio_requests, granted_prio
+                    if tlsID == "J36":
+                        time_list_a.append(traci.simulation.getTime())
+                    elif tlsID == "cluster2264846650_2264846651_2264924925_2264924930_#4more":
+                        time_list_b.append([traci.simulation.getTime(), tlsID])
+                    elif tlsID == "J24":
+                        time_list_c.append([traci.simulation.getTime(), tlsID])             
+        return tls_cooldown_status, prio_requests, granted_prio, time_list_a, time_list_b, time_list_c
 
 def cooldownUpdate_spc(tls_cooldown_status, cooldown_time, steptime, skipped_phases, granted_comp):
     for tls_id, tls in tls_cooldown_status.items():
@@ -181,6 +187,7 @@ def make_a_df(name, red_min_duration_coefficient, cooldownTime, strategy, mode, 
     df["granted_priority_requests"]= granted_prio
     df["skipped_phases"]= skipped_phases
     df["granted_compensation"]= granted_comp
+    os.remove(name + ".csv")
     return df
 
 def nfd_output(file_path, title, cooldown, red_min_duration_coefficient):
@@ -238,22 +245,39 @@ def nfd_output(file_path, title, cooldown, red_min_duration_coefficient):
     plt.savefig(file_path, format="png")
     plt.clf()
 
-def file_output(nfd_name_file_output, trips_name_file_output, edgedata_name_file_output, str1, str2, mode, number, xml2csv_path):
+def file_output(nfd_name_file_output, trips_name_file_output, edgedata_name_file_output, tls_state_file_output, str1, str2, mode, number, xml2csv_path):
     
-    nfd_name = nfd_name_file_output + "_" + str1 + "_" + str2 + "_" + mode
+    nfd_name = nfd_name_file_output + "_" + str(number)
     rename_file(f"DODE_E3_output_fixed{number}.xml", nfd_name)
     subprocess.run(["python3", xml2csv_path, nfd_name + ".xml"])
+    os.remove(nfd_name + ".xml")
 
-    trips_name = trips_name_file_output + "_" + str1 + "_" + str2 + "_" + mode
+    trips_name = trips_name_file_output + "_" + str(number)
     rename_file(f"tripinfo_fixed_pt{number}.xml", trips_name)
     subprocess.run(["python3", xml2csv_path, trips_name + ".xml"])
+    os.remove(trips_name + ".xml")
 
-    edgedata_name = edgedata_name_file_output + "_" + str1 + "_" + str2 + "_" + mode
+    edgedata_name = edgedata_name_file_output + "_" + str(number)
     rename_file(f"edgedata{number}.xml", edgedata_name)
     subprocess.run(["python3", xml2csv_path, edgedata_name + ".xml"])
-    return nfd_name, trips_name, edgedata_name
+    os.remove(edgedata_name + ".xml")
+    
+    tls_state_name = tls_state_file_output + "_" + str(number)
+    rename_file(f"tls_states_a_{number}.xml", "a_" + tls_state_name)
+    subprocess.run(["python3", xml2csv_path, "a_" + tls_state_name + ".xml"])
 
-def run_simulation_prio(sumoCmd, simulationTime, tram_to_tls_det_distance, red_min_duration_coefficient, cooldownTime, stepTime, way):
+    rename_file(f"tls_states_b_{number}.xml", "b_" + tls_state_name)
+    subprocess.run(["python3", xml2csv_path, "b_" + tls_state_name + ".xml"])
+
+    rename_file(f"tls_states_c_{number}.xml", "c_" + tls_state_name)
+    subprocess.run(["python3", xml2csv_path, "c_" + tls_state_name + ".xml"])
+
+    os.remove("a_" + tls_state_name + ".xml")
+    os.remove("b_" + tls_state_name + ".xml")
+    os.remove("c_" + tls_state_name + ".xml")
+    return nfd_name, trips_name, edgedata_name, tls_state_name
+
+def run_simulation_prio(sumoCmd, simulationTime, tram_to_tls_det_distance, red_min_duration_coefficient, cooldownTime, stepTime, way, time_list_a, time_list_b, time_list_c):
     traci.start(sumoCmd)
     step = 0
 
@@ -267,7 +291,7 @@ def run_simulation_prio(sumoCmd, simulationTime, tram_to_tls_det_distance, red_m
         traci.simulationStep()
         tramList = getTramList()
         for tram in tramList:
-            tls_cooldown_status, prio_requests, granted_prio = tlsStateChange(tram, tls_cooldown_status, tram_to_tls_det_distance, red_min_duration_coefficient, prio_requests, granted_prio)
+            tls_cooldown_status, prio_requests, granted_prio, time_list_a, time_list_b, time_list_c = tlsStateChange(tram, tls_cooldown_status, tram_to_tls_det_distance, red_min_duration_coefficient, prio_requests, granted_prio, time_list_a, time_list_b, time_list_c)
 
         if way=="spc":
             tls_cooldown_status, skipped_phases, granted_comp  = cooldownUpdate_spc(tls_cooldown_status, cooldownTime, stepTime, skipped_phases, granted_comp)
@@ -281,10 +305,59 @@ def run_simulation_prio(sumoCmd, simulationTime, tram_to_tls_det_distance, red_m
         step += 1
 
     traci.close()
-    return prio_requests, granted_prio, skipped_phases, granted_comp
+    return prio_requests, granted_prio, skipped_phases, granted_comp, time_list_a, time_list_b, time_list_c
 
 def file_names_def(way):
     nfd_name_file_output = f"{way}_DODE_E3_output_pt_priority" 
     trips_name_file_output = f"{way}_tripinfo_pt_priority"
     edgedata_name_file_output =f"{way}_edgedata_pt_priority"
     return nfd_name_file_output, trips_name_file_output, edgedata_name_file_output
+
+def make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, strategy, mode, skip_phase, compensation, prio_requests, granted_prio, skipped_phases, granted_comp):
+    df= pd.DataFrame()
+    row = {
+        "number": number,
+        "minimum_red_coefficient": red_min_duration_coefficient,
+        "cooldown_duration": cooldownTime,
+        "strategy": strategy,
+        "mode": mode,
+        "skip_phase": skip_phase,
+        "compensation": compensation,
+        "priority_requests": prio_requests,
+        "granted_priority_requests": granted_prio,
+        "skipped_phases": skipped_phases,
+        "granted_compensation": granted_comp
+    }
+    row_df = pd.DataFrame([row])  # row from above
+    df = pd.concat([df, row_df], ignore_index=True)
+    df.to_csv(f"outputs/variables_{number}.csv", index=False)
+    return df
+def file_output_xml(nfd_name_file_output, trips_name_file_output, edgedata_name_file_output, str1, str2, mode, number):
+    nfd_name = nfd_name_file_output + "_" + str(number)
+    rename_file(f"DODE_E3_output_fixed{number}.xml", nfd_name)
+
+    trips_name = trips_name_file_output + "_" + str(number)
+    rename_file(f"tripinfo_fixed_pt{number}.xml", trips_name)
+
+    edgedata_name = edgedata_name_file_output + "_" + str(number)
+    rename_file(f"edgedata{number}.xml", edgedata_name)
+
+    return nfd_name, trips_name, edgedata_name
+
+def move_via_os(src, dst):
+    os.makedirs(os.path.dirname(dst), exist_ok=True)
+    with open(src, "rb") as fsrc, open(dst, "wb") as fdst:
+        fdst.write(fsrc.read())
+    os.remove(src)
+
+def file_output_csv(nfd_name_file_output, trips_name_file_output, edgedata_name_file_output, str1, str2, mode, number):
+    nfd_name = nfd_name_file_output + "_" + str(number)
+    rename_file(f"DODE_E3_output_fixed{number}.csv", nfd_name)
+
+    trips_name = trips_name_file_output + "_" + str(number)
+    rename_file(f"tripinfo_fixed_pt{number}.csv", trips_name)
+
+    edgedata_name = edgedata_name_file_output + "_" + str(number)
+    rename_file(f"edgedata{number}.csv", edgedata_name)
+
+    return nfd_name, trips_name, edgedata_name

@@ -11,16 +11,18 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--number", type=int)
 parser.add_argument("--cooldown", type=float, nargs='+') 
 parser.add_argument("--red_coeff", type=float, nargs='+') 
-parser.add_argument("--way", type=str, nargs='+') 
-parser.add_argument("--mode", type=str, nargs='+')
+parser.add_argument("--way", type=str) 
+parser.add_argument("--mode", type=str)
+parser.add_argument("--time", type=float)
 args = parser.parse_args()
 
 number = args.number
 cooldownTime_list = args.cooldown
 red_min_duration_coefficient_list = args.red_coeff
 way = args.way
+simulationTime=args.time
 mode= str(args.mode)
-mode=mode[2:-2]
+
 
 template_path = "DODE_new.add.xml"
 with open(template_path, "r") as f:
@@ -57,39 +59,56 @@ else:
 if not os.path.exists(sumo_config_path):
     sys.exit(f"Error: Config file not found at {sumo_config_path}")
 
-
+nfd_name_file_output= "E3_output"
+trips_name_file_output= "tripinfo"
+edgedata_name_file_output= "edgedata"
+tls_state_file_output="tls_states"
 import traci
 from model import *
-if way != "no priority":
+if way != "nopriority":
+    time_list_a=[]
+    time_list_b=[]
+    time_list_c=[]
     for cooldownTime in cooldownTime_list:
         for red_min_duration_coefficient in red_min_duration_coefficient_list:
             ## Skip phase + compensation case
-            nfd_name_file_output, trips_name_file_output, edgedata_name_file_output = file_names_def(way)
+            
 
             #Running the siimulation
-            prio_requests, granted_prio, skipped_phases, granted_comp = run_simulation_prio(sumoCmd, simulationTime, tram_to_tls_det_distance, red_min_duration_coefficient, cooldownTime, stepTime, way)
+            prio_requests, granted_prio, skipped_phases, granted_comp, time_list_a, time_list_b, time_list_c = run_simulation_prio(sumoCmd, simulationTime, tram_to_tls_det_distance, red_min_duration_coefficient, cooldownTime, stepTime, way, time_list_a, time_list_b, time_list_c)
             
             #Renaming the files 
             str1 = str(cooldownTime)
             str2 = str(red_min_duration_coefficient)
 
-            nfd_name, trips_name, edgedata_name = file_output(nfd_name_file_output, trips_name_file_output, edgedata_name_file_output, str1, str2, mode, number, xml2csv_path)
+            nfd_name, trips_name, edgedata_name, tls_state_name = file_output(nfd_name_file_output, trips_name_file_output, edgedata_name_file_output, tls_state_file_output, str1, str2, mode, number, xml2csv_path)
 
-            df_E3_spc = make_a_df(nfd_name, red_min_duration_coefficient, cooldownTime, strategy, mode, True, True, prio_requests, granted_prio, skipped_phases, granted_comp)
-            df_tripinfo_spc = make_a_df(trips_name, red_min_duration_coefficient, cooldownTime, strategy, mode, True, True, prio_requests, granted_prio, skipped_phases, granted_comp)
-            df_edgedata_spc = make_a_df(edgedata_name, red_min_duration_coefficient, cooldownTime, strategy, mode, True, True, prio_requests, granted_prio, skipped_phases, granted_comp)
             
-            df_E3_final = pd.concat([df_E3_final, df_E3_spc], ignore_index=True)
-            df_tripinfo_final = pd.concat([df_tripinfo_final, df_tripinfo_spc], ignore_index=True)
-            df_edgedata_final = pd.concat([df_edgedata_final, df_edgedata_spc], ignore_index=True)
+            if way=="spc":
+                df_coefficients = make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, strategy, mode, True, True, prio_requests, granted_prio, skipped_phases, granted_comp)
+            elif way=="spnc":
+               df_coefficients = make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, strategy, mode, True, False, prio_requests, granted_prio, skipped_phases, granted_comp)
+            elif way=="nspc":
+                df_coefficients = make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, strategy, mode, False, True, prio_requests, granted_prio, skipped_phases, granted_comp)
+            elif way=="nspnc":
+                df_coefficients = make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, strategy, mode, False, False, prio_requests, granted_prio, skipped_phases, granted_comp)
+
+            np.savetxt(f"tls_request_times_a_{number}.csv", time_list_a, delimiter=",", fmt='%s')
+            move_via_os(f"tls_request_times_a_{number}.csv", "outputs/" + f"tls_request_times_a_{number}.csv")
+
+            np.savetxt(f"tls_request_times_b_{number}.csv", time_list_b, delimiter=",", fmt='%s')
+            move_via_os(f"tls_request_times_b_{number}.csv", "outputs/" + f"tls_request_times_b_{number}.csv")
+
+            np.savetxt(f"tls_request_times_c_{number}.csv", time_list_c, delimiter=",", fmt='%s')
+            move_via_os(f"tls_request_times_c_{number}.csv", "outputs/" + f"tls_request_times_c_{number}.csv")
+
+            
 
 
 else:
     strategy = "pt"
 
-    nfd_name_file_output= "DODE_E3_output_pt" 
-    trips_name_file_output= "tripinfo_pt"
-    edgedata_name_file_output="spc_edgedata_pt"
+    
 
     traci.start(sumoCmd)
     step = 0
@@ -110,20 +129,19 @@ else:
     str1 = str(0)
     str2 = str(0)
 
-    nfd_name, trips_name, edgedata_name = file_output(nfd_name_file_output, trips_name_file_output, edgedata_name_file_output, str1, str2, mode, number, xml2csv_path)
-
-    df_E3_spc = make_a_df(nfd_name, None, None, strategy, mode, True, True, prio_requests, granted_prio, skipped_phases, granted_comp)
-    df_tripinfo_spc = make_a_df(trips_name, None, None, strategy, mode, True, True, prio_requests, granted_prio, skipped_phases, granted_comp)
-    df_edgedata_spc = make_a_df(edgedata_name, None, None, strategy, mode, True, True, prio_requests, granted_prio, skipped_phases, granted_comp)
-
-df_E3_final = pd.concat([df_E3_final, df_E3_spc], ignore_index=True)
-df_tripinfo_final = pd.concat([df_tripinfo_final, df_tripinfo_spc], ignore_index=True)
-df_edgedata_final = pd.concat([df_edgedata_final, df_edgedata_spc], ignore_index=True)
+    nfd_name, trips_name, edgedata_name, tls_state_name = file_output(nfd_name_file_output, trips_name_file_output, edgedata_name_file_output, tls_state_file_output, str1, str2, mode, number, xml2csv_path)
+    df_coefficients = make_a_df_variables(number, None, None, strategy, mode, None, None, prio_requests, granted_prio, skipped_phases, granted_comp)
 
 
-df_E3_final.to_csv(f"outputs/E3_output_{number}.csv", index=False)
-df_tripinfo_final.to_csv(f"outputs/tripinfo_{number}.csv", index=False)
-df_edgedata_final.to_csv(f"outputs/edgedata_{number}.csv", index=False)
+move_via_os(nfd_name + ".csv", "outputs/" + nfd_name + ".csv")
+move_via_os(trips_name + ".csv", "outputs/" + trips_name + ".csv")
+move_via_os(edgedata_name + ".csv", "outputs/" + edgedata_name + ".csv")
+
+move_via_os("a_" + tls_state_name + ".csv", "outputs/" + "a_" + tls_state_name + ".csv")
+move_via_os("b_" + tls_state_name + ".csv", "outputs/" + "b_" + tls_state_name + ".csv")
+move_via_os("c_" + tls_state_name + ".csv", "outputs/" + "c_" + tls_state_name + ".csv")
+
+
 
 
 
