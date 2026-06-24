@@ -6,6 +6,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cbook as cbook
 import traci
+import sys
 import subprocess
 
 def genTLSdictionary():
@@ -110,66 +111,38 @@ def tlsStateChange(tram, tls_cooldown_status, tram_to_tls_det_distance, red_min_
                         time_list_c.append([traci.simulation.getTime(), tlsID])             
         return tls_cooldown_status, prio_requests, granted_prio, time_list_a, time_list_b, time_list_c
 
-def cooldownUpdate_spc(tls_cooldown_status, cooldown_time, steptime, skipped_phases, granted_comp):
-    for tls_id, tls in tls_cooldown_status.items():
-        ## Skipping phase
-        if traci.trafficlight.getPhase(tls_id) == tls["yellow_before_benf_phase"] and (tls["cooldown_time"]>5 or tls["cooldown"]==False):
+def phaseSkip(tls, tls_id, skipped_phases):
+    if traci.trafficlight.getPhase(tls_id) == tls["yellow_before_benf_phase"] and (tls["cooldown_time"]>5 or tls["cooldown"]==False):
                 skip_phase=(tls["yellow_before_benf_phase"]+3)%tls["lenphases"]
                 traci.trafficlight.setPhase(tls_id, skip_phase)
                 tls["yellow_before_benf_phase"]=None 
                 skipped_phases += 1
-        ## Compensating the stolen time, giving it back to the phase from which we stole it
-        if traci.trafficlight.getPhase(tls_id)==tls["stolen_tls_phase"]: 
+    return tls, skipped_phases
+    
+def compensation(tls, tls_id, granted_comp): ## Compensating the stolen time, giving it back to the phase from which we stole it
+    if traci.trafficlight.getPhase(tls_id)==tls["stolen_tls_phase"]: 
                 new_time=tls["originalcyclelength"]+tls["stolen_time"]
                 traci.trafficlight.setPhaseDuration(tls_id, new_time)
                 tls["originalcyclelength"]=0.0
                 tls["stolen_tls_phase"]=None
                 granted_comp += 1
-        if tls["cooldown"]:
-            tls["cooldown_time"] += steptime
-            if tls["cooldown_time"] >= cooldown_time: #turn off the cooldown if the time lapsed is over the defined cooldown time
-                tls["cooldown"]=False
-                tls["cooldown_time"]=0
-    return tls_cooldown_status, skipped_phases, granted_comp
+    return tls, granted_comp
 
-def cooldownUpdate_nspc(tls_cooldown_status, cooldown_time, steptime, skipped_phases, granted_comp):
-    for tls_id, tls in tls_cooldown_status.items():
-        ## Compensating the stolen time, giving it back to the phase from which we stole it
-        if traci.trafficlight.getPhase(tls_id)==tls["stolen_tls_phase"]: 
-                new_time=tls["originalcyclelength"]+tls["stolen_time"]
-                traci.trafficlight.setPhaseDuration(tls_id, new_time)
-                tls["originalcyclelength"]=0.0
-                tls["stolen_tls_phase"]=None
-                granted_comp += 1
-        if tls["cooldown"]:
+def cooldownCount(tls, cooldown_time, steptime):
+    if tls["cooldown"]:
             tls["cooldown_time"] += steptime
             if tls["cooldown_time"] >= cooldown_time: #turn off the cooldown if the time lapsed is over the defined cooldown time
                 tls["cooldown"]=False
                 tls["cooldown_time"]=0
-    return tls_cooldown_status, skipped_phases, granted_comp
+    return tls
 
-def cooldownUpdate_spnc(tls_cooldown_status, cooldown_time, steptime, skipped_phases, granted_comp):
+def cooldownUpdate(tls_cooldown_status, cooldown_time, steptime, skipped_phases, granted_comp, way):
     for tls_id, tls in tls_cooldown_status.items():
-        ## Skipping phase
-        if traci.trafficlight.getPhase(tls_id) == tls["yellow_before_benf_phase"] and (tls["cooldown_time"]>5 or tls["cooldown"]==False):
-                skip_phase=(tls["yellow_before_benf_phase"]+3)%tls["lenphases"]
-                traci.trafficlight.setPhase(tls_id, skip_phase)
-                tls["yellow_before_benf_phase"]=None 
-                skipped_phases += 1
-        if tls["cooldown"]:
-            tls["cooldown_time"] += steptime
-            if tls["cooldown_time"] >= cooldown_time: #turn off the cooldown if the time lapsed is over the defined cooldown time
-                tls["cooldown"]=False
-                tls["cooldown_time"]=0
-    return tls_cooldown_status, skipped_phases, granted_comp
-
-def cooldownUpdate_nspnc(tls_cooldown_status, cooldown_time, steptime, skipped_phases, granted_comp):
-    for tls_id, tls in tls_cooldown_status.items():
-        if tls["cooldown"]:
-            tls["cooldown_time"] += steptime
-            if tls["cooldown_time"] >= cooldown_time: #turn off the cooldown if the time lapsed is over the defined cooldown time
-                tls["cooldown"]=False
-                tls["cooldown_time"]=0
+        if way=="spc" or way=="spnc":
+            tls, skipped_phases = phaseSkip(tls, tls_id, skipped_phases)
+        if way=="spc" or way=="nspc":
+            tls, granted_comp = compensation(tls, tls_id, granted_comp)
+        tls = cooldownCount(tls, cooldown_time, steptime)
     return tls_cooldown_status, skipped_phases, granted_comp
 
 def rename_file(file, namebase):
@@ -190,92 +163,13 @@ def make_a_df(name, red_min_duration_coefficient, cooldownTime, strategy, mode, 
     os.remove(name + ".csv")
     return df
 
-def nfd_output(file_path, title, cooldown, red_min_duration_coefficient):
-    list_poly_der = []
-    LANE_LENGTH_KM = 69.345
-
-   
+def file_output(number, xml2csv_path, path_0, list_files):
+    for file in list_files:       
+        path = f"{path_0}/simulations/run_{number}/{file}_{number}.xml"
+        subprocess.run(["python3", xml2csv_path, path])
+        os.remove(path)
     
 
-    df = pd.read_csv(file_path, delimiter=';')
-    df = df.dropna(subset=['interval_begin',
-    'interval_vehicleSum', 'interval_vehicleSumWithin',
-    'interval_meanSpeed', 'interval_meanSpeedWithin'
-    ])
-
-    df['accumulation'] = df['interval_vehicleSum'] + df['interval_vehicleSumWithin']
-    df['production'] = (df['interval_vehicleSum'] * df['interval_meanSpeed'] * 3.6) + \
-                   (df['interval_vehicleSumWithin'] * df['interval_meanSpeedWithin'] * 3.6)
-    df['density'] = df['accumulation'] / LANE_LENGTH_KM
-    df['flow'] = df['production'] / LANE_LENGTH_KM
-
-    coefficients = np.polyfit(df['density'], df['flow'], 3)
-    polynomial = np.poly1d(coefficients)
-    x_vals = np.linspace(df['density'].min(), df['density'].max(), 100)
-    y_vals = polynomial(x_vals)
-    polyvals = polynomial(df['density'])
-
-    derivative_poly = np.polyder(polynomial, 1)
-    list_poly_der.append(derivative_poly)
-
-    i = 0  
-
-
-    max_flow_idx = np.argmax(y_vals)
-    max_density = x_vals[max_flow_idx]
-    max_flow = y_vals[max_flow_idx]
-    
-
-    plt.scatter(df['density'], df['flow'], alpha=0.6, c=df['interval_begin'], cmap = "Spectral", label='Data Points')
-    plt.plot(x_vals, y_vals, color='red', label='3rd Degree Polynomial Fit')
-    plt.plot(max_density, max_flow, 'ko', markersize=8, label='Max Flow on Fit')
-    plt.annotate(f'{max_density:.2f}, {max_flow:.2f}', (max_density, max_flow),
-                textcoords="offset points", xytext=(0, 10), ha='center', fontsize=8)
-    
-    plt.colorbar()
-    plt.xlabel('Density (veh/km)')
-    plt.ylabel('Flow (veh/h)')
-    plt.grid(True)
-    plt.legend(fontsize=8)
-    plt.xlim(0, 45)
-    plt.ylim(150, 525)
-
-    file_path=file_path[:-4]+'.png'
-    plt.suptitle('NFD' + " --- " + title + "   " + "Cooldown: " + str(cooldown) + "sec" + "   Red coefficient: " + str(red_min_duration_coefficient))
-    plt.savefig(file_path, format="png")
-    plt.clf()
-
-def file_output(nfd_name_file_output, trips_name_file_output, edgedata_name_file_output, tls_state_file_output, str1, str2, mode, number, xml2csv_path):
-    
-    nfd_name = nfd_name_file_output + "_" + str(number)
-    rename_file(f"DODE_E3_output_fixed{number}.xml", nfd_name)
-    subprocess.run(["python3", xml2csv_path, nfd_name + ".xml"])
-    os.remove(nfd_name + ".xml")
-
-    trips_name = trips_name_file_output + "_" + str(number)
-    rename_file(f"tripinfo_fixed_pt{number}.xml", trips_name)
-    subprocess.run(["python3", xml2csv_path, trips_name + ".xml"])
-    os.remove(trips_name + ".xml")
-
-    edgedata_name = edgedata_name_file_output + "_" + str(number)
-    rename_file(f"edgedata{number}.xml", edgedata_name)
-    subprocess.run(["python3", xml2csv_path, edgedata_name + ".xml"])
-    os.remove(edgedata_name + ".xml")
-    
-    tls_state_name = tls_state_file_output + "_" + str(number)
-    rename_file(f"tls_states_a_{number}.xml", "a_" + tls_state_name)
-    subprocess.run(["python3", xml2csv_path, "a_" + tls_state_name + ".xml"])
-
-    rename_file(f"tls_states_b_{number}.xml", "b_" + tls_state_name)
-    subprocess.run(["python3", xml2csv_path, "b_" + tls_state_name + ".xml"])
-
-    rename_file(f"tls_states_c_{number}.xml", "c_" + tls_state_name)
-    subprocess.run(["python3", xml2csv_path, "c_" + tls_state_name + ".xml"])
-
-    os.remove("a_" + tls_state_name + ".xml")
-    os.remove("b_" + tls_state_name + ".xml")
-    os.remove("c_" + tls_state_name + ".xml")
-    return nfd_name, trips_name, edgedata_name, tls_state_name
 
 def run_simulation_prio(sumoCmd, simulationTime, tram_to_tls_det_distance, red_min_duration_coefficient, cooldownTime, stepTime, way, time_list_a, time_list_b, time_list_c):
     traci.start(sumoCmd)
@@ -292,28 +186,14 @@ def run_simulation_prio(sumoCmd, simulationTime, tram_to_tls_det_distance, red_m
         tramList = getTramList()
         for tram in tramList:
             tls_cooldown_status, prio_requests, granted_prio, time_list_a, time_list_b, time_list_c = tlsStateChange(tram, tls_cooldown_status, tram_to_tls_det_distance, red_min_duration_coefficient, prio_requests, granted_prio, time_list_a, time_list_b, time_list_c)
-
-        if way=="spc":
-            tls_cooldown_status, skipped_phases, granted_comp  = cooldownUpdate_spc(tls_cooldown_status, cooldownTime, stepTime, skipped_phases, granted_comp)
-        elif way=="spnc":
-            tls_cooldown_status, skipped_phases, granted_comp  = cooldownUpdate_spnc(tls_cooldown_status, cooldownTime, stepTime, skipped_phases, granted_comp)
-        elif way=="nspc":
-            tls_cooldown_status, skipped_phases, granted_comp  = cooldownUpdate_nspc(tls_cooldown_status, cooldownTime, stepTime, skipped_phases, granted_comp)
-        elif way=="nspnc":
-            tlsc_cooldown_status, skipped_phases, granted_comp  = cooldownUpdate_nspnc(tls_cooldown_status, cooldownTime, stepTime, skipped_phases, granted_comp)
-
+            tls_cooldown_status, skipped_phases, granted_comp  = cooldownUpdate(tls_cooldown_status, cooldownTime, stepTime, skipped_phases, granted_comp, way)
         step += 1
 
     traci.close()
     return prio_requests, granted_prio, skipped_phases, granted_comp, time_list_a, time_list_b, time_list_c
 
-def file_names_def(way):
-    nfd_name_file_output = f"{way}_DODE_E3_output_pt_priority" 
-    trips_name_file_output = f"{way}_tripinfo_pt_priority"
-    edgedata_name_file_output =f"{way}_edgedata_pt_priority"
-    return nfd_name_file_output, trips_name_file_output, edgedata_name_file_output
 
-def make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, strategy, mode, skip_phase, compensation, prio_requests, granted_prio, skipped_phases, granted_comp):
+def make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, strategy, mode, skip_phase, compensation, prio_requests, granted_prio, skipped_phases, granted_comp, path_0):
     df= pd.DataFrame()
     row = {
         "number": number,
@@ -330,34 +210,12 @@ def make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, stra
     }
     row_df = pd.DataFrame([row])  # row from above
     df = pd.concat([df, row_df], ignore_index=True)
-    df.to_csv(f"outputs/variables_{number}.csv", index=False)
+    df.to_csv(f"{path_0}/outputs/run_{number}/variables_{number}.csv", index=False)
     return df
-def file_output_xml(nfd_name_file_output, trips_name_file_output, edgedata_name_file_output, str1, str2, mode, number):
-    nfd_name = nfd_name_file_output + "_" + str(number)
-    rename_file(f"DODE_E3_output_fixed{number}.xml", nfd_name)
 
-    trips_name = trips_name_file_output + "_" + str(number)
-    rename_file(f"tripinfo_fixed_pt{number}.xml", trips_name)
-
-    edgedata_name = edgedata_name_file_output + "_" + str(number)
-    rename_file(f"edgedata{number}.xml", edgedata_name)
-
-    return nfd_name, trips_name, edgedata_name
 
 def move_via_os(src, dst):
     os.makedirs(os.path.dirname(dst), exist_ok=True)
     with open(src, "rb") as fsrc, open(dst, "wb") as fdst:
         fdst.write(fsrc.read())
     os.remove(src)
-
-def file_output_csv(nfd_name_file_output, trips_name_file_output, edgedata_name_file_output, str1, str2, mode, number):
-    nfd_name = nfd_name_file_output + "_" + str(number)
-    rename_file(f"DODE_E3_output_fixed{number}.csv", nfd_name)
-
-    trips_name = trips_name_file_output + "_" + str(number)
-    rename_file(f"tripinfo_fixed_pt{number}.csv", trips_name)
-
-    edgedata_name = edgedata_name_file_output + "_" + str(number)
-    rename_file(f"edgedata{number}.csv", edgedata_name)
-
-    return nfd_name, trips_name, edgedata_name

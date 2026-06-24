@@ -183,7 +183,7 @@
     <busStop id="81058533" name="Rennweg" lane="49991796.122_0" startPos="29.52" endPos="54.52" friendlyPos="true" lines="13 17 7 6 11"/>
     <busStop id="94583344" name="Central" lane="217408193#1_0" startPos="22.50" endPos="57.50" friendlyPos="true" lines="4"/>
     <!-- Detectors -->
-    <entryExitDetector id="E3_output" pos="0.00,0.00" period="180.00" file="DODE_E3_output_fixed{number}.xml" vTypes="passenger" expectArrival="1">
+    <entryExitDetector id="E3_output" pos="0.00,0.00" period="180.00" file="E3_output_{number}.xml" vTypes="passenger" expectArrival="1">
         <detEntry lane="120613501_0" pos="7.50" friendlyPos="1"/>
         <detEntry lane="120613501_1" pos="7.50" friendlyPos="1"/>
         <detEntry lane="27410107#0_1" pos="7.50" friendlyPos="1"/>
@@ -280,8 +280,9 @@
         <detExit lane="71160126#0_1" pos="-6.50" friendlyPos="1"/>
     </entryExitDetector>
     <!--Edgedata-->
-    <laneData id="Lanedata" file="edgedata{number}.xml" period="180" vTypes="passenger"/>
-    <timedEvent type="SaveTLSStates" source="J36" dest="tls_states_a_{number}.xml"/>
-    <timedEvent type="SaveTLSStates" source="cluster2264846650_2264846651_2264924925_2264924930_#4more" dest="tls_states_b_{number}.xml"/>
-    <timedEvent type="SaveTLSStates" source="J24" dest="tls_states_c_{number}.xml"/>
+    <laneData id="Lanedata" file="edgedata_{number}.xml" period="180" vTypes="passenger"/>
+    <edgeData id="Edgedata" file="edgedata_edge_{number}.xml" period="180"/>
+    <timedEvent type="SaveTLSStates" source="J36" dest="a_tls_states_{number}.xml"/>
+    <timedEvent type="SaveTLSStates" source="cluster2264846650_2264846651_2264924925_2264924930_#4more" dest="b_tls_states_{number}.xml"/>
+    <timedEvent type="SaveTLSStates" source="J24" dest="c_tls_states_{number}.xml"/>
 </additional>

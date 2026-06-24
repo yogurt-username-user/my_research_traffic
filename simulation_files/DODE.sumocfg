@@ -6,13 +6,13 @@
 <sumoConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
 
     <input>
-        <net-file value="merged_{mode}.net.xml"/>
-        <route-files value="merged.rou.xml"/>
+        <net-file value="{path}/simulation_files/merged_{mode}.net.xml"/>
+        <route-files value="{path}/simulation_files/merged.rou.xml"/>
         <additional-files value="DODE_new{number}.add.xml"/>
     </input>
 
     <output>
-        <tripinfo-output value="tripinfo_fixed_pt{number}.xml"/>
+        <tripinfo-output value="tripinfo_{number}.xml"/>
         <tripinfo-output.write-unfinished value="true" />
         <tripinfo-output.write-undeparted value="true" />
     </output>
@@ -30,7 +30,7 @@
 
     <report>
         <verbose value="true"/>
-        <log value="errors.xml"/>
+        <log value="errors_{number}.xml"/>
     </report>
 
     <tripinfo_device>
