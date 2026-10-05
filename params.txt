@@ -1,82 +1,410 @@
---number 1 --cooldown 0 --way nopriority --red_coeff 0 --mode fixed --time 39600
---number 2 --cooldown 0 --way nopriority --red_coeff 0 --mode actuated --time 39600
---number 3 --cooldown 5 --way nspc --red_coeff 0.0 --mode fixed --time 39600
---number 4 --cooldown 5 --way nspc --red_coeff 0.0 --mode actuated --time 39600
---number 5 --cooldown 5 --way nspnc --red_coeff 0.0 --mode fixed --time 39600
---number 6 --cooldown 5 --way nspnc --red_coeff 0.0 --mode actuated --time 39600
---number 7 --cooldown 30 --way nspc --red_coeff 0.0 --mode fixed --time 39600
---number 8 --cooldown 30 --way nspc --red_coeff 0.0 --mode actuated --time 39600
---number 9 --cooldown 30 --way nspnc --red_coeff 0.0 --mode fixed --time 39600
---number 10 --cooldown 30 --way nspnc --red_coeff 0.0 --mode actuated --time 39600
---number 11 --cooldown 60 --way nspc --red_coeff 0.0 --mode fixed --time 39600
---number 12 --cooldown 60 --way nspc --red_coeff 0.0 --mode actuated --time 39600
---number 13 --cooldown 60 --way nspnc --red_coeff 0.0 --mode fixed --time 39600
---number 14 --cooldown 60 --way nspnc --red_coeff 0.0 --mode actuated --time 39600
---number 15 --cooldown 90 --way nspc --red_coeff 0.0 --mode fixed --time 39600
---number 16 --cooldown 90 --way nspc --red_coeff 0.0 --mode actuated --time 39600
---number 17 --cooldown 90 --way nspnc --red_coeff 0.0 --mode fixed --time 39600
---number 18 --cooldown 90 --way nspnc --red_coeff 0.0 --mode actuated --time 39600
---number 19 --cooldown 120 --way nspc --red_coeff 0.0 --mode fixed --time 39600
---number 20 --cooldown 120 --way nspc --red_coeff 0.0 --mode actuated --time 39600
---number 21 --cooldown 120 --way nspnc --red_coeff 0.0 --mode fixed --time 39600
---number 22 --cooldown 120 --way nspnc --red_coeff 0.0 --mode actuated --time 39600
---number 23 --cooldown 5 --way nspc --red_coeff 0.25 --mode fixed --time 39600
---number 24 --cooldown 5 --way nspc --red_coeff 0.25 --mode actuated --time 39600
---number 25 --cooldown 5 --way nspnc --red_coeff 0.25 --mode fixed --time 39600
---number 26 --cooldown 5 --way nspnc --red_coeff 0.25 --mode actuated --time 39600
---number 27 --cooldown 30 --way nspc --red_coeff 0.25 --mode fixed --time 39600
---number 28 --cooldown 30 --way nspc --red_coeff 0.25 --mode actuated --time 39600
---number 29 --cooldown 30 --way nspnc --red_coeff 0.25 --mode fixed --time 39600
---number 30 --cooldown 30 --way nspnc --red_coeff 0.25 --mode actuated --time 39600
---number 31 --cooldown 60 --way nspc --red_coeff 0.25 --mode fixed --time 39600
---number 32 --cooldown 60 --way nspc --red_coeff 0.25 --mode actuated --time 39600
---number 33 --cooldown 60 --way nspnc --red_coeff 0.25 --mode fixed --time 39600
---number 34 --cooldown 60 --way nspnc --red_coeff 0.25 --mode actuated --time 39600
---number 35 --cooldown 90 --way nspc --red_coeff 0.25 --mode fixed --time 39600
---number 36 --cooldown 90 --way nspc --red_coeff 0.25 --mode actuated --time 39600
---number 37 --cooldown 90 --way nspnc --red_coeff 0.25 --mode fixed --time 39600
---number 38 --cooldown 90 --way nspnc --red_coeff 0.25 --mode actuated --time 39600
---number 39 --cooldown 120 --way nspc --red_coeff 0.25 --mode fixed --time 39600
---number 40 --cooldown 120 --way nspc --red_coeff 0.25 --mode actuated --time 39600
---number 41 --cooldown 120 --way nspnc --red_coeff 0.25 --mode fixed --time 39600
---number 42 --cooldown 120 --way nspnc --red_coeff 0.25 --mode actuated --time 39600
---number 43 --cooldown 5 --way nspc --red_coeff 0.5 --mode fixed --time 39600
---number 44 --cooldown 5 --way nspc --red_coeff 0.5 --mode actuated --time 39600
---number 45 --cooldown 5 --way nspnc --red_coeff 0.5 --mode fixed --time 39600
---number 46 --cooldown 5 --way nspnc --red_coeff 0.5 --mode actuated --time 39600
---number 47 --cooldown 30 --way nspc --red_coeff 0.5 --mode fixed --time 39600
---number 48 --cooldown 30 --way nspc --red_coeff 0.5 --mode actuated --time 39600
---number 49 --cooldown 30 --way nspnc --red_coeff 0.5 --mode fixed --time 39600
---number 50 --cooldown 30 --way nspnc --red_coeff 0.5 --mode actuated --time 39600
---number 51 --cooldown 60 --way nspc --red_coeff 0.5 --mode fixed --time 39600
---number 52 --cooldown 60 --way nspc --red_coeff 0.5 --mode actuated --time 39600
---number 53 --cooldown 60 --way nspnc --red_coeff 0.5 --mode fixed --time 39600
---number 54 --cooldown 60 --way nspnc --red_coeff 0.5 --mode actuated --time 39600
---number 55 --cooldown 90 --way nspc --red_coeff 0.5 --mode fixed --time 39600
---number 56 --cooldown 90 --way nspc --red_coeff 0.5 --mode actuated --time 39600
---number 57 --cooldown 90 --way nspnc --red_coeff 0.5 --mode fixed --time 39600
---number 58 --cooldown 90 --way nspnc --red_coeff 0.5 --mode actuated --time 39600
---number 59 --cooldown 120 --way nspc --red_coeff 0.5 --mode fixed --time 39600
---number 60 --cooldown 120 --way nspc --red_coeff 0.5 --mode actuated --time 39600
---number 61 --cooldown 120 --way nspnc --red_coeff 0.5 --mode fixed --time 39600
---number 62 --cooldown 120 --way nspnc --red_coeff 0.5 --mode actuated --time 39600
---number 63 --cooldown 5 --way nspc --red_coeff 0.75 --mode fixed --time 39600
---number 64 --cooldown 5 --way nspc --red_coeff 0.75 --mode actuated --time 39600
---number 65 --cooldown 5 --way nspnc --red_coeff 0.75 --mode fixed --time 39600
---number 66 --cooldown 5 --way nspnc --red_coeff 0.75 --mode actuated --time 39600
---number 67 --cooldown 30 --way nspc --red_coeff 0.75 --mode fixed --time 39600
---number 68 --cooldown 30 --way nspc --red_coeff 0.75 --mode actuated --time 39600
---number 69 --cooldown 30 --way nspnc --red_coeff 0.75 --mode fixed --time 39600
---number 70 --cooldown 30 --way nspnc --red_coeff 0.75 --mode actuated --time 39600
---number 71 --cooldown 60 --way nspc --red_coeff 0.75 --mode fixed --time 39600
---number 72 --cooldown 60 --way nspc --red_coeff 0.75 --mode actuated --time 39600
---number 73 --cooldown 60 --way nspnc --red_coeff 0.75 --mode fixed --time 39600
---number 74 --cooldown 60 --way nspnc --red_coeff 0.75 --mode actuated --time 39600
---number 75 --cooldown 90 --way nspc --red_coeff 0.75 --mode fixed --time 39600
---number 76 --cooldown 90 --way nspc --red_coeff 0.75 --mode actuated --time 39600
---number 77 --cooldown 90 --way nspnc --red_coeff 0.75 --mode fixed --time 39600
---number 78 --cooldown 90 --way nspnc --red_coeff 0.75 --mode actuated --time 39600
---number 79 --cooldown 120 --way nspc --red_coeff 0.75 --mode fixed --time 39600
---number 80 --cooldown 120 --way nspc --red_coeff 0.75 --mode actuated --time 39600
---number 81 --cooldown 120 --way nspnc --red_coeff 0.75 --mode fixed --time 39600
---number 82 --cooldown 120 --way nspnc --red_coeff 0.75 --mode actuated --time 39600
+--number 1 --cooldown 0.0 --way nopriority --red_coeff 0.0 --mode fixed --time 39600 --seed 23423
+--number 2 --cooldown 0.0 --way nopriority --red_coeff 0.0 --mode actuated --time 39600 --seed 23423
+--number 3 --cooldown 5 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23423
+--number 4 --cooldown 5 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23423
+--number 5 --cooldown 5 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23423
+--number 6 --cooldown 5 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23423
+--number 7 --cooldown 30 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23423
+--number 8 --cooldown 30 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23423
+--number 9 --cooldown 30 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23423
+--number 10 --cooldown 30 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23423
+--number 11 --cooldown 60 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23423
+--number 12 --cooldown 60 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23423
+--number 13 --cooldown 60 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23423
+--number 14 --cooldown 60 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23423
+--number 15 --cooldown 90 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23423
+--number 16 --cooldown 90 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23423
+--number 17 --cooldown 90 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23423
+--number 18 --cooldown 90 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23423
+--number 19 --cooldown 120 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23423
+--number 20 --cooldown 120 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23423
+--number 21 --cooldown 120 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23423
+--number 22 --cooldown 120 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23423
+--number 23 --cooldown 5 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23423
+--number 24 --cooldown 5 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23423
+--number 25 --cooldown 5 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23423
+--number 26 --cooldown 5 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23423
+--number 27 --cooldown 30 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23423
+--number 28 --cooldown 30 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23423
+--number 29 --cooldown 30 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23423
+--number 30 --cooldown 30 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23423
+--number 31 --cooldown 60 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23423
+--number 32 --cooldown 60 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23423
+--number 33 --cooldown 60 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23423
+--number 34 --cooldown 60 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23423
+--number 35 --cooldown 90 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23423
+--number 36 --cooldown 90 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23423
+--number 37 --cooldown 90 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23423
+--number 38 --cooldown 90 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23423
+--number 39 --cooldown 120 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23423
+--number 40 --cooldown 120 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23423
+--number 41 --cooldown 120 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23423
+--number 42 --cooldown 120 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23423
+--number 43 --cooldown 5 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23423
+--number 44 --cooldown 5 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23423
+--number 45 --cooldown 5 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23423
+--number 46 --cooldown 5 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23423
+--number 47 --cooldown 30 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23423
+--number 48 --cooldown 30 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23423
+--number 49 --cooldown 30 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23423
+--number 50 --cooldown 30 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23423
+--number 51 --cooldown 60 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23423
+--number 52 --cooldown 60 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23423
+--number 53 --cooldown 60 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23423
+--number 54 --cooldown 60 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23423
+--number 55 --cooldown 90 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23423
+--number 56 --cooldown 90 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23423
+--number 57 --cooldown 90 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23423
+--number 58 --cooldown 90 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23423
+--number 59 --cooldown 120 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23423
+--number 60 --cooldown 120 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23423
+--number 61 --cooldown 120 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23423
+--number 62 --cooldown 120 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23423
+--number 63 --cooldown 5 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23423
+--number 64 --cooldown 5 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23423
+--number 65 --cooldown 5 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23423
+--number 66 --cooldown 5 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23423
+--number 67 --cooldown 30 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23423
+--number 68 --cooldown 30 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23423
+--number 69 --cooldown 30 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23423
+--number 70 --cooldown 30 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23423
+--number 71 --cooldown 60 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23423
+--number 72 --cooldown 60 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23423
+--number 73 --cooldown 60 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23423
+--number 74 --cooldown 60 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23423
+--number 75 --cooldown 90 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23423
+--number 76 --cooldown 90 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23423
+--number 77 --cooldown 90 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23423
+--number 78 --cooldown 90 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23423
+--number 79 --cooldown 120 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23423
+--number 80 --cooldown 120 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23423
+--number 81 --cooldown 120 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23423
+--number 82 --cooldown 120 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23423
+--number 83 --cooldown 0.0 --way nopriority --red_coeff 0.0 --mode fixed --time 39600 --seed 23424
+--number 84 --cooldown 0.0 --way nopriority --red_coeff 0.0 --mode actuated --time 39600 --seed 23424
+--number 85 --cooldown 5 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23424
+--number 86 --cooldown 5 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23424
+--number 87 --cooldown 5 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23424
+--number 88 --cooldown 5 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23424
+--number 89 --cooldown 30 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23424
+--number 90 --cooldown 30 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23424
+--number 91 --cooldown 30 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23424
+--number 92 --cooldown 30 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23424
+--number 93 --cooldown 60 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23424
+--number 94 --cooldown 60 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23424
+--number 95 --cooldown 60 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23424
+--number 96 --cooldown 60 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23424
+--number 97 --cooldown 90 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23424
+--number 98 --cooldown 90 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23424
+--number 99 --cooldown 90 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23424
+--number 100 --cooldown 90 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23424
+--number 101 --cooldown 120 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23424
+--number 102 --cooldown 120 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23424
+--number 103 --cooldown 120 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23424
+--number 104 --cooldown 120 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23424
+--number 105 --cooldown 5 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23424
+--number 106 --cooldown 5 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23424
+--number 107 --cooldown 5 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23424
+--number 108 --cooldown 5 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23424
+--number 109 --cooldown 30 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23424
+--number 110 --cooldown 30 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23424
+--number 111 --cooldown 30 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23424
+--number 112 --cooldown 30 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23424
+--number 113 --cooldown 60 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23424
+--number 114 --cooldown 60 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23424
+--number 115 --cooldown 60 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23424
+--number 116 --cooldown 60 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23424
+--number 117 --cooldown 90 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23424
+--number 118 --cooldown 90 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23424
+--number 119 --cooldown 90 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23424
+--number 120 --cooldown 90 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23424
+--number 121 --cooldown 120 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23424
+--number 122 --cooldown 120 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23424
+--number 123 --cooldown 120 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23424
+--number 124 --cooldown 120 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23424
+--number 125 --cooldown 5 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23424
+--number 126 --cooldown 5 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23424
+--number 127 --cooldown 5 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23424
+--number 128 --cooldown 5 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23424
+--number 129 --cooldown 30 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23424
+--number 130 --cooldown 30 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23424
+--number 131 --cooldown 30 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23424
+--number 132 --cooldown 30 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23424
+--number 133 --cooldown 60 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23424
+--number 134 --cooldown 60 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23424
+--number 135 --cooldown 60 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23424
+--number 136 --cooldown 60 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23424
+--number 137 --cooldown 90 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23424
+--number 138 --cooldown 90 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23424
+--number 139 --cooldown 90 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23424
+--number 140 --cooldown 90 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23424
+--number 141 --cooldown 120 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23424
+--number 142 --cooldown 120 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23424
+--number 143 --cooldown 120 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23424
+--number 144 --cooldown 120 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23424
+--number 145 --cooldown 5 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23424
+--number 146 --cooldown 5 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23424
+--number 147 --cooldown 5 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23424
+--number 148 --cooldown 5 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23424
+--number 149 --cooldown 30 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23424
+--number 150 --cooldown 30 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23424
+--number 151 --cooldown 30 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23424
+--number 152 --cooldown 30 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23424
+--number 153 --cooldown 60 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23424
+--number 154 --cooldown 60 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23424
+--number 155 --cooldown 60 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23424
+--number 156 --cooldown 60 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23424
+--number 157 --cooldown 90 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23424
+--number 158 --cooldown 90 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23424
+--number 159 --cooldown 90 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23424
+--number 160 --cooldown 90 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23424
+--number 161 --cooldown 120 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23424
+--number 162 --cooldown 120 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23424
+--number 163 --cooldown 120 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23424
+--number 164 --cooldown 120 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23424
+--number 165 --cooldown 0.0 --way nopriority --red_coeff 0.0 --mode fixed --time 39600 --seed 23425
+--number 166 --cooldown 0.0 --way nopriority --red_coeff 0.0 --mode actuated --time 39600 --seed 23425
+--number 167 --cooldown 5 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23425
+--number 168 --cooldown 5 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23425
+--number 169 --cooldown 5 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23425
+--number 170 --cooldown 5 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23425
+--number 171 --cooldown 30 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23425
+--number 172 --cooldown 30 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23425
+--number 173 --cooldown 30 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23425
+--number 174 --cooldown 30 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23425
+--number 175 --cooldown 60 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23425
+--number 176 --cooldown 60 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23425
+--number 177 --cooldown 60 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23425
+--number 178 --cooldown 60 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23425
+--number 179 --cooldown 90 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23425
+--number 180 --cooldown 90 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23425
+--number 181 --cooldown 90 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23425
+--number 182 --cooldown 90 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23425
+--number 183 --cooldown 120 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23425
+--number 184 --cooldown 120 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23425
+--number 185 --cooldown 120 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23425
+--number 186 --cooldown 120 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23425
+--number 187 --cooldown 5 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23425
+--number 188 --cooldown 5 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23425
+--number 189 --cooldown 5 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23425
+--number 190 --cooldown 5 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23425
+--number 191 --cooldown 30 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23425
+--number 192 --cooldown 30 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23425
+--number 193 --cooldown 30 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23425
+--number 194 --cooldown 30 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23425
+--number 195 --cooldown 60 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23425
+--number 196 --cooldown 60 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23425
+--number 197 --cooldown 60 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23425
+--number 198 --cooldown 60 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23425
+--number 199 --cooldown 90 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23425
+--number 200 --cooldown 90 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23425
+--number 201 --cooldown 90 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23425
+--number 202 --cooldown 90 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23425
+--number 203 --cooldown 120 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23425
+--number 204 --cooldown 120 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23425
+--number 205 --cooldown 120 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23425
+--number 206 --cooldown 120 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23425
+--number 207 --cooldown 5 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23425
+--number 208 --cooldown 5 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23425
+--number 209 --cooldown 5 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23425
+--number 210 --cooldown 5 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23425
+--number 211 --cooldown 30 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23425
+--number 212 --cooldown 30 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23425
+--number 213 --cooldown 30 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23425
+--number 214 --cooldown 30 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23425
+--number 215 --cooldown 60 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23425
+--number 216 --cooldown 60 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23425
+--number 217 --cooldown 60 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23425
+--number 218 --cooldown 60 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23425
+--number 219 --cooldown 90 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23425
+--number 220 --cooldown 90 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23425
+--number 221 --cooldown 90 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23425
+--number 222 --cooldown 90 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23425
+--number 223 --cooldown 120 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23425
+--number 224 --cooldown 120 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23425
+--number 225 --cooldown 120 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23425
+--number 226 --cooldown 120 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23425
+--number 227 --cooldown 5 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23425
+--number 228 --cooldown 5 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23425
+--number 229 --cooldown 5 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23425
+--number 230 --cooldown 5 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23425
+--number 231 --cooldown 30 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23425
+--number 232 --cooldown 30 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23425
+--number 233 --cooldown 30 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23425
+--number 234 --cooldown 30 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23425
+--number 235 --cooldown 60 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23425
+--number 236 --cooldown 60 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23425
+--number 237 --cooldown 60 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23425
+--number 238 --cooldown 60 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23425
+--number 239 --cooldown 90 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23425
+--number 240 --cooldown 90 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23425
+--number 241 --cooldown 90 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23425
+--number 242 --cooldown 90 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23425
+--number 243 --cooldown 120 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23425
+--number 244 --cooldown 120 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23425
+--number 245 --cooldown 120 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23425
+--number 246 --cooldown 120 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23425
+--number 247 --cooldown 0.0 --way nopriority --red_coeff 0.0 --mode fixed --time 39600 --seed 23426
+--number 248 --cooldown 0.0 --way nopriority --red_coeff 0.0 --mode actuated --time 39600 --seed 23426
+--number 249 --cooldown 5 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23426
+--number 250 --cooldown 5 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23426
+--number 251 --cooldown 5 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23426
+--number 252 --cooldown 5 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23426
+--number 253 --cooldown 30 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23426
+--number 254 --cooldown 30 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23426
+--number 255 --cooldown 30 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23426
+--number 256 --cooldown 30 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23426
+--number 257 --cooldown 60 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23426
+--number 258 --cooldown 60 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23426
+--number 259 --cooldown 60 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23426
+--number 260 --cooldown 60 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23426
+--number 261 --cooldown 90 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23426
+--number 262 --cooldown 90 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23426
+--number 263 --cooldown 90 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23426
+--number 264 --cooldown 90 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23426
+--number 265 --cooldown 120 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23426
+--number 266 --cooldown 120 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23426
+--number 267 --cooldown 120 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23426
+--number 268 --cooldown 120 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23426
+--number 269 --cooldown 5 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23426
+--number 270 --cooldown 5 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23426
+--number 271 --cooldown 5 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23426
+--number 272 --cooldown 5 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23426
+--number 273 --cooldown 30 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23426
+--number 274 --cooldown 30 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23426
+--number 275 --cooldown 30 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23426
+--number 276 --cooldown 30 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23426
+--number 277 --cooldown 60 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23426
+--number 278 --cooldown 60 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23426
+--number 279 --cooldown 60 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23426
+--number 280 --cooldown 60 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23426
+--number 281 --cooldown 90 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23426
+--number 282 --cooldown 90 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23426
+--number 283 --cooldown 90 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23426
+--number 284 --cooldown 90 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23426
+--number 285 --cooldown 120 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23426
+--number 286 --cooldown 120 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23426
+--number 287 --cooldown 120 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23426
+--number 288 --cooldown 120 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23426
+--number 289 --cooldown 5 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23426
+--number 290 --cooldown 5 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23426
+--number 291 --cooldown 5 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23426
+--number 292 --cooldown 5 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23426
+--number 293 --cooldown 30 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23426
+--number 294 --cooldown 30 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23426
+--number 295 --cooldown 30 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23426
+--number 296 --cooldown 30 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23426
+--number 297 --cooldown 60 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23426
+--number 298 --cooldown 60 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23426
+--number 299 --cooldown 60 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23426
+--number 300 --cooldown 60 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23426
+--number 301 --cooldown 90 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23426
+--number 302 --cooldown 90 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23426
+--number 303 --cooldown 90 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23426
+--number 304 --cooldown 90 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23426
+--number 305 --cooldown 120 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23426
+--number 306 --cooldown 120 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23426
+--number 307 --cooldown 120 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23426
+--number 308 --cooldown 120 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23426
+--number 309 --cooldown 5 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23426
+--number 310 --cooldown 5 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23426
+--number 311 --cooldown 5 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23426
+--number 312 --cooldown 5 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23426
+--number 313 --cooldown 30 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23426
+--number 314 --cooldown 30 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23426
+--number 315 --cooldown 30 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23426
+--number 316 --cooldown 30 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23426
+--number 317 --cooldown 60 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23426
+--number 318 --cooldown 60 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23426
+--number 319 --cooldown 60 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23426
+--number 320 --cooldown 60 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23426
+--number 321 --cooldown 90 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23426
+--number 322 --cooldown 90 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23426
+--number 323 --cooldown 90 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23426
+--number 324 --cooldown 90 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23426
+--number 325 --cooldown 120 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23426
+--number 326 --cooldown 120 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23426
+--number 327 --cooldown 120 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23426
+--number 328 --cooldown 120 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23426
+--number 329 --cooldown 0.0 --way nopriority --red_coeff 0.0 --mode fixed --time 39600 --seed 23427
+--number 330 --cooldown 0.0 --way nopriority --red_coeff 0.0 --mode actuated --time 39600 --seed 23427
+--number 331 --cooldown 5 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23427
+--number 332 --cooldown 5 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23427
+--number 333 --cooldown 5 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23427
+--number 334 --cooldown 5 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23427
+--number 335 --cooldown 30 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23427
+--number 336 --cooldown 30 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23427
+--number 337 --cooldown 30 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23427
+--number 338 --cooldown 30 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23427
+--number 339 --cooldown 60 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23427
+--number 340 --cooldown 60 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23427
+--number 341 --cooldown 60 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23427
+--number 342 --cooldown 60 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23427
+--number 343 --cooldown 90 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23427
+--number 344 --cooldown 90 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23427
+--number 345 --cooldown 90 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23427
+--number 346 --cooldown 90 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23427
+--number 347 --cooldown 120 --way nspc --red_coeff 0.0 --mode fixed --time 39600 --seed 23427
+--number 348 --cooldown 120 --way nspc --red_coeff 0.0 --mode actuated --time 39600 --seed 23427
+--number 349 --cooldown 120 --way nspnc --red_coeff 0.0 --mode fixed --time 39600 --seed 23427
+--number 350 --cooldown 120 --way nspnc --red_coeff 0.0 --mode actuated --time 39600 --seed 23427
+--number 351 --cooldown 5 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23427
+--number 352 --cooldown 5 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23427
+--number 353 --cooldown 5 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23427
+--number 354 --cooldown 5 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23427
+--number 355 --cooldown 30 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23427
+--number 356 --cooldown 30 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23427
+--number 357 --cooldown 30 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23427
+--number 358 --cooldown 30 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23427
+--number 359 --cooldown 60 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23427
+--number 360 --cooldown 60 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23427
+--number 361 --cooldown 60 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23427
+--number 362 --cooldown 60 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23427
+--number 363 --cooldown 90 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23427
+--number 364 --cooldown 90 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23427
+--number 365 --cooldown 90 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23427
+--number 366 --cooldown 90 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23427
+--number 367 --cooldown 120 --way nspc --red_coeff 0.25 --mode fixed --time 39600 --seed 23427
+--number 368 --cooldown 120 --way nspc --red_coeff 0.25 --mode actuated --time 39600 --seed 23427
+--number 369 --cooldown 120 --way nspnc --red_coeff 0.25 --mode fixed --time 39600 --seed 23427
+--number 370 --cooldown 120 --way nspnc --red_coeff 0.25 --mode actuated --time 39600 --seed 23427
+--number 371 --cooldown 5 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23427
+--number 372 --cooldown 5 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23427
+--number 373 --cooldown 5 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23427
+--number 374 --cooldown 5 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23427
+--number 375 --cooldown 30 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23427
+--number 376 --cooldown 30 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23427
+--number 377 --cooldown 30 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23427
+--number 378 --cooldown 30 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23427
+--number 379 --cooldown 60 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23427
+--number 380 --cooldown 60 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23427
+--number 381 --cooldown 60 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23427
+--number 382 --cooldown 60 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23427
+--number 383 --cooldown 90 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23427
+--number 384 --cooldown 90 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23427
+--number 385 --cooldown 90 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23427
+--number 386 --cooldown 90 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23427
+--number 387 --cooldown 120 --way nspc --red_coeff 0.5 --mode fixed --time 39600 --seed 23427
+--number 388 --cooldown 120 --way nspc --red_coeff 0.5 --mode actuated --time 39600 --seed 23427
+--number 389 --cooldown 120 --way nspnc --red_coeff 0.5 --mode fixed --time 39600 --seed 23427
+--number 390 --cooldown 120 --way nspnc --red_coeff 0.5 --mode actuated --time 39600 --seed 23427
+--number 391 --cooldown 5 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23427
+--number 392 --cooldown 5 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23427
+--number 393 --cooldown 5 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23427
+--number 394 --cooldown 5 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23427
+--number 395 --cooldown 30 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23427
+--number 396 --cooldown 30 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23427
+--number 397 --cooldown 30 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23427
+--number 398 --cooldown 30 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23427
+--number 399 --cooldown 60 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23427
+--number 400 --cooldown 60 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23427
+--number 401 --cooldown 60 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23427
+--number 402 --cooldown 60 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23427
+--number 403 --cooldown 90 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23427
+--number 404 --cooldown 90 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23427
+--number 405 --cooldown 90 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23427
+--number 406 --cooldown 90 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23427
+--number 407 --cooldown 120 --way nspc --red_coeff 0.75 --mode fixed --time 39600 --seed 23427
+--number 408 --cooldown 120 --way nspc --red_coeff 0.75 --mode actuated --time 39600 --seed 23427
+--number 409 --cooldown 120 --way nspnc --red_coeff 0.75 --mode fixed --time 39600 --seed 23427
+--number 410 --cooldown 120 --way nspnc --red_coeff 0.75 --mode actuated --time 39600 --seed 23427

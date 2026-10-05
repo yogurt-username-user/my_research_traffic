@@ -1,0 +1,4 @@
+interval_begin;interval_end;interval_id;interval_meanDurationWithin;interval_meanHaltsPerVehicle;interval_meanHaltsPerVehicleWithin;interval_meanIntervalDurationWithin;interval_meanIntervalHaltsPerVehicleWithin;interval_meanIntervalSpeedWithin;interval_meanOverlapTravelTime;interval_meanSpeed;interval_meanSpeedWithin;interval_meanTimeLoss;interval_meanTimeLossWithin;interval_meanTravelTime;interval_vehicleSum;interval_vehicleSumWithin
+21600.00;21780.00;E3_output;90.42;1.52;1.99;90.42;1.99;6.83;92.64;8.06;6.83;31.10;40.24;92.14;96;395
+21780.00;21960.00;E3_output;126.48;3.26;3.12;107.87;2.68;6.36;167.18;7.01;6.46;71.21;54.79;166.70;348;498
+21960.00;22000.00;E3_output;129.73;4.16;3.25;36.31;0.91;6.49;192.26;6.57;6.56;90.65;16.69;191.79;88;515

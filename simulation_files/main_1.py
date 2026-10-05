@@ -3,7 +3,7 @@ import sys
 import xml
 import subprocess
 import pandas as pd 
-from config import simulationTime, startTime, stepTime, tram_to_tls_det_distance, sumoBinary, number, cooldownTime, red_min_duration_coefficient, way, simulationTime, mode, list_files
+from config import simulationTime, startTime, stepTime, tram_to_tls_det_distance, sumoBinary, number, cooldownTime, red_min_duration_coefficient, way, simulationTime, mode, list_files, seed
 import argparse
 
 
@@ -17,6 +17,7 @@ parser.add_argument("--red_coeff", type=float)
 parser.add_argument("--way", type=str) 
 parser.add_argument("--mode", type=str)
 parser.add_argument("--time", type=float)
+parser.add_argument("--seed", type=int)
 args = parser.parse_args()
 
 script_path = os.path.dirname(os.path.abspath(sys.argv[0]))
@@ -27,16 +28,26 @@ path_0 = os.path.abspath(parent)
 os.chdir(path_0)
 
 
-if all(list(args.__dict__.values())):
-    number = args.number
-    cooldownTime = args.cooldown
-    red_min_duration_coefficient = args.red_coeff
-    way = args.way
-    simulationTime=args.time
-    mode= str(args.mode)
-else:
-    message=f"------------\nRunning simulation with variables from config file:\n Number: {number}\n Minimum phase duration coefficient:{red_min_duration_coefficient}\n Cooldown duration: {cooldownTime}\n Mode: {mode} \n Strategy: {way}\n-------------"
-    print(message)
+required_args = [    
+    args.number,    
+    args.cooldown,    
+    args.red_coeff,    
+    args.way,    
+    args.mode,    
+    args.time,    
+    args.seed,
+    ]
+
+if all(value is not None for value in required_args):    
+    number = args.number    
+    cooldownTime = args.cooldown    
+    red_min_duration_coefficient = args.red_coeff    
+    way = args.way    
+    simulationTime = args.time    
+    mode = args.mode    
+    seed = args.seed
+else:    
+    print("Running simulation with variables from config file")
 
 if not os.path.isdir(f"{path_0}/simulations/run_{number}"):
     os.makedirs(f"{path_0}/simulations/run_{number}")
@@ -58,7 +69,8 @@ with open(f"{path_0}/simulations/run_{number}/DODE_new{number}.add.xml", "w") as
 
 output = template_cfg.replace("{number}", str(number))
 output = output.replace("{mode}", mode)
-output = output.replace("{path}",path_0)
+output = output.replace("{path}", path_0)
+output = output.replace("{seed}", str(seed))
 with open(f"{path_0}/simulations/run_{number}/DODE_{number}.sumocfg", "w") as out:
     out.write(output)
 
@@ -79,8 +91,8 @@ if not os.path.exists(sumo_config_path):
     
 xml2csv_path=os.path.join(os.environ['SUMO_HOME'], "tools/xml/xml2csv.py")
 
-import traci
 from model import *
+
 
 if way != "nopriority":
     strategy = "pt_priority"
@@ -97,17 +109,17 @@ if way != "nopriority":
 
     file_output(number, xml2csv_path, path_0, list_files)
     
-    if way=="spc" or "spnc":
-        sp = True
+    if way in ("spc", "spnc"):
+        sp = "True"
     else:
-        sp = False
+        sp = "False"
 
-    if way=="spc" or "nspc":
-        co = True
+    if way in ("spc", "nspc"):
+        co = "True"
     else:
-        co = False
+        co = "False"
 
-    df_coefficients = make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, strategy, mode, sp, co, prio_requests, granted_prio, skipped_phases, granted_comp, path_0)
+    df_coefficients = make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, strategy, mode, sp, co, prio_requests, granted_prio, skipped_phases, granted_comp, path_0, seed)
    
     np.savetxt(f"tls_request_times_a_{number}.csv", time_list_a, delimiter=",", fmt='%s')
     move_via_os(f"tls_request_times_a_{number}.csv", f"{path_0}/outputs/run_{number}/tls_request_times_a_{number}.csv")
@@ -145,7 +157,7 @@ else:
     str2 = str(0)
 
     file_output(number, xml2csv_path, path_0, list_files)
-    df_coefficients = make_a_df_variables(number, None, None, strategy, mode, None, None, prio_requests, granted_prio, skipped_phases, granted_comp, path_0)
+    df_coefficients = make_a_df_variables(number, None, None, strategy, mode, None, None, prio_requests, granted_prio, skipped_phases, granted_comp, path_0, seed)
 
 # Moving files to the output folder
 for file in list_files:

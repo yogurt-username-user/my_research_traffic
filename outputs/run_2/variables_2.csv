@@ -1,0 +1,2 @@
+number,minimum_red_coefficient,cooldown_duration,strategy,mode,skip_phase,compensation,priority_requests,granted_priority_requests,skipped_phases,granted_compensation,seed
+2,0,30,pt_priority,fixed,False,True,101952,2398,0,2110,23435

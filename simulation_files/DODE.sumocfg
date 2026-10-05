@@ -28,6 +28,10 @@
         <time-to-teleport value="-1"/>
     </processing>
 
+    <random_number>
+        <seed value="{seed}"/>
+    </random_number>
+
     <report>
         <verbose value="true"/>
         <log value="errors_{number}.xml"/>

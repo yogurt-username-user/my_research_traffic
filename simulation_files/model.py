@@ -5,9 +5,31 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.cbook as cbook
-import traci
+import libsumo as traci
 import sys
 import subprocess
+
+controlled_links_cache = {}
+phase_cache = {}
+yellow_phase_cache = {}
+
+def get_controlled_links_cached(tlsID):    
+    if tlsID not in controlled_links_cache:        
+        controlled_links_cache[tlsID] = traci.trafficlight.getControlledLinks(tlsID)
+    return controlled_links_cache[tlsID]
+
+def get_phases_cached(tlsID):    
+    if tlsID not in phase_cache:        
+        logics = traci.trafficlight.getAllProgramLogics(tlsID)        
+        phase_cache[tlsID] = logics[0].phases
+    return phase_cache[tlsID]
+
+def get_yellow_phases_cached(tlsID):
+    if tlsID not in yellow_phase_cache:
+        logics = traci.trafficlight.getAllProgramLogics(tlsID)
+        lengthy= len(str(logics[0].phases[0]))
+        yellow_phase_cache[tlsID] = "y" * lengthy
+    return yellow_phase_cache[tlsID]
 
 def genTLSdictionary():
     tls_ids = traci.trafficlight.getIDList()
@@ -36,7 +58,7 @@ def phaseSearch(tram,tlsID):
     tram_route=traci.vehicle.getRoute(tram)
     current_edge = traci.vehicle.getRouteIndex(tram)
     next_edge = tram_route[current_edge + 1]
-    controlled_links = traci.trafficlight.getControlledLinks(tlsID) #getting the lanes that are controlled by the tls
+    controlled_links = get_controlled_links_cached(tlsID) #getting the lanes that are controlled by the tls
     tram_index = None
 
     for phase_index, link_pair in enumerate(controlled_links): #finding the correct index for the tram 
@@ -52,9 +74,7 @@ def phaseSearch(tram,tlsID):
     return tram_index
 
 def phaseSearch2(tram_index, tlsID):
-    tls_logics = traci.trafficlight.getAllProgramLogics(tlsID) #Here we get the definitions for all of the phases in the TLS program
-    tls_logic = tls_logics[0]
-    phases = tls_logic.phases
+    phases = get_phases_cached(tlsID)
     target_phase = None
     for phase_tls_order, phase in enumerate(phases):
         if phase.state[tram_index] == "u":
@@ -78,7 +98,7 @@ def cooldownTurnon(tls_cooldown_status, target_phase, next_phase_index, tlsID, p
         
     return tls_cooldown_status
 
-def nextPhase(target_phase, tlsID, phases):
+def nextPhase(target_phase, tlsID):
     if target_phase is not None:
         traci.trafficlight.setPhase(tlsID, target_phase)
     else:
@@ -101,7 +121,8 @@ def tlsStateChange(tram, tls_cooldown_status, tram_to_tls_det_distance, red_min_
                     target_phase, phases = phaseSearch2(tram_index, tlsID)
                     next_phase_index = (target_phase + 1) % len(phases)
                     tls_cooldown_status =  cooldownTurnon(tls_cooldown_status, target_phase, next_phase_index, tlsID, phases) 
-                    nextPhase(target_phase, tlsID, phases)
+                    yellow_state=get_yellow_phases_cached(tlsID)
+                    traci.trafficlight.setRedYellowGreenState(tlsID, yellow_state)
                     granted_prio += 1
                     if tlsID == "J36":
                         time_list_a.append(traci.simulation.getTime())
@@ -138,6 +159,10 @@ def cooldownCount(tls, cooldown_time, steptime):
 
 def cooldownUpdate(tls_cooldown_status, cooldown_time, steptime, skipped_phases, granted_comp, way):
     for tls_id, tls in tls_cooldown_status.items():
+        if tls["cooldown_time"] == 3.0:
+            target_phase = tls["yellow_before_benf_phase"]
+            traci.trafficlight.setProgram(tls_id, programID="0")
+            nextPhase(target_phase, tls_id)
         if way=="spc" or way=="spnc":
             tls, skipped_phases = phaseSkip(tls, tls_id, skipped_phases)
         if way=="spc" or way=="nspc":
@@ -186,14 +211,14 @@ def run_simulation_prio(sumoCmd, simulationTime, tram_to_tls_det_distance, red_m
         tramList = getTramList()
         for tram in tramList:
             tls_cooldown_status, prio_requests, granted_prio, time_list_a, time_list_b, time_list_c = tlsStateChange(tram, tls_cooldown_status, tram_to_tls_det_distance, red_min_duration_coefficient, prio_requests, granted_prio, time_list_a, time_list_b, time_list_c)
-            tls_cooldown_status, skipped_phases, granted_comp  = cooldownUpdate(tls_cooldown_status, cooldownTime, stepTime, skipped_phases, granted_comp, way)
+        tls_cooldown_status, skipped_phases, granted_comp  = cooldownUpdate(tls_cooldown_status, cooldownTime, stepTime, skipped_phases, granted_comp, way)
         step += 1
 
     traci.close()
     return prio_requests, granted_prio, skipped_phases, granted_comp, time_list_a, time_list_b, time_list_c
 
 
-def make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, strategy, mode, skip_phase, compensation, prio_requests, granted_prio, skipped_phases, granted_comp, path_0):
+def make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, strategy, mode, skip_phase, compensation, prio_requests, granted_prio, skipped_phases, granted_comp, path_0, seed):
     df= pd.DataFrame()
     row = {
         "number": number,
@@ -206,7 +231,8 @@ def make_a_df_variables(number, red_min_duration_coefficient, cooldownTime, stra
         "priority_requests": prio_requests,
         "granted_priority_requests": granted_prio,
         "skipped_phases": skipped_phases,
-        "granted_compensation": granted_comp
+        "granted_compensation": granted_comp,
+        "seed": seed,
     }
     row_df = pd.DataFrame([row])  # row from above
     df = pd.concat([df, row_df], ignore_index=True)

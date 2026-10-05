@@ -1,17 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- generated on 2026-01-26 17:59:10 by Eclipse SUMO netedit Version 1.22.0
+<!-- generated on 2026-09-25 18:58:26 by Eclipse SUMO netedit Version 1.22.0
 <neteditConfiguration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/neteditConfiguration.xsd">
 
     <input>
-        <sumocfg-file value="/home/egli/Documents/30_12_(copy)/repairingnetwork/DODE.sumocfg"/>
-        <additional-files value="/home/egli/Documents/30_12_(copy)/repairingnetwork/DODE_new.add.xml"/>
-        <route-files value="/home/egli/Documents/30_12_(copy)/repairingnetwork/merged.rou.xml"/>
-        <sumo-net-file value="/home/egli/Documents/30_12_(copy)/repairingnetwork/merged2.net.xml"/>
+        <sumo-net-file value="/home/egli/Documents/SVT_research/simulation_files/merged_fixed.net.xml"/>
     </input>
 
     <output>
-        <output-file value="/home/egli/Documents/30_12_(copy)/repairingnetwork/merged2.net.xml"/>
+        <output-file value="/home/egli/Documents/SVT_research/simulation_files/merged_fixed.net.xml"/>
     </output>
 
     <processing>
@@ -10456,7 +10453,7 @@
     <tlLogic id="GS_1608392196" type="static" programID="0" offset="0">
         <phase duration="1"  state="ururruuuu"/>
         <phase duration="15" state="GrGrrGGGG"/>
-        <phase duration="3"  state="Gryrryyyr"/>
+        <phase duration="3"  state="Gryrryyyy"/>
         <phase duration="1"  state="Grrrrrrrr"/>
         <phase duration="1"  state="Gurrrrrrr"/>
         <phase duration="15" state="GGrrrrrrr"/>
@@ -10536,9 +10533,9 @@
         <phase duration="25" state="GGGGrrGrrrr"/>
         <phase duration="3"  state="yyyyrryrrrr"/>
         <phase duration="1"  state="rrrrrrrrrrr"/>
-        <phase duration="1"  state="rrrruuruuru"/>
-        <phase duration="25" state="rrrrGGrGGrG"/>
-        <phase duration="3"  state="rrrryyryyry"/>
+        <phase duration="1"  state="rrrruuruuuu"/>
+        <phase duration="25" state="rrrrGGrGGGG"/>
+        <phase duration="3"  state="rrrryyryyyy"/>
         <phase duration="1"  state="rrrrrrrrrrr"/>
     </tlLogic>
     <tlLogic id="GS_28137428" type="static" programID="0" offset="0">
@@ -10630,14 +10627,14 @@
         <phase duration="3"  state="yyyyrrrrrr"/>
     </tlLogic>
     <tlLogic id="GS_29798700" type="static" programID="0" offset="0">
-        <phase duration="1"  state="ururrruurrr"/>
-        <phase duration="25" state="GrGrrrGGrrr"/>
-        <phase duration="3"  state="yryrrryyrrr"/>
-        <phase duration="1"  state="rrrrrrrrrrr"/>
-        <phase duration="1"  state="rrruuurruuu"/>
-        <phase duration="25" state="rrrGGGrrGgG"/>
-        <phase duration="3"  state="rrryyyrryyy"/>
-        <phase duration="1"  state="rrrrrrrrrrr"/>
+        <phase duration="1"  state="uurrruurrr"/>
+        <phase duration="25" state="GGrrrGGrrr"/>
+        <phase duration="3"  state="yyrrryyrrr"/>
+        <phase duration="1"  state="rrrrrrrrrr"/>
+        <phase duration="1"  state="rruuurruuu"/>
+        <phase duration="25" state="rrGGGrrGgG"/>
+        <phase duration="3"  state="rryyyrryyy"/>
+        <phase duration="1"  state="rrrrrrrrrr"/>
     </tlLogic>
     <tlLogic id="GS_29798703" type="static" programID="0" offset="0">
         <phase duration="1"  state="uuuuuurr"/>
@@ -10737,11 +10734,11 @@
         <phase duration="3"  state="rrryyyrryyy"/>
         <phase duration="1"  state="rrrrrrrrrrr"/>
         <phase duration="1"  state="rrrrrruurrr"/>
-        <phase duration="20" state="rrrrrrGGrrr"/>
+        <phase duration="25" state="rrrrrrGGrrr"/>
         <phase duration="3"  state="rrrrrryyrrr"/>
         <phase duration="1"  state="rrrrrrrrrrr"/>
         <phase duration="1"  state="uuurrrrrrrr"/>
-        <phase duration="15" state="GGGrrrrrrrr"/>
+        <phase duration="10" state="GGGrrrrrrrr"/>
         <phase duration="3"  state="yyyrrrrrrrr"/>
         <phase duration="1"  state="rrrrrrrrrrr"/>
     </tlLogic>
@@ -10762,11 +10759,11 @@
         <phase duration="1"  state="rrrrrrrrrr"/>
         <phase duration="1"  state="uurrruurrr"/>
         <phase duration="15" state="GGrrrGGrrr"/>
-        <phase duration="3"  state="yyrrrGGrrr"/>
-        <phase duration="1"  state="rrrrrGGrrr"/>
-        <phase duration="1"  state="rrrrrGGurr"/>
-        <phase duration="15" state="rrrrrGGGrr"/>
-        <phase duration="3"  state="rrrrryyyrr"/>
+        <phase duration="3"  state="yyrrryyrrr"/>
+        <phase duration="1"  state="rrrrrrrrrr"/>
+        <phase duration="1"  state="rrurruuurr"/>
+        <phase duration="15" state="rrgrrGGGrr"/>
+        <phase duration="3"  state="rryrryyyrr"/>
         <phase duration="1"  state="rrrrrrrrrr"/>
     </tlLogic>
     <tlLogic id="GS_48932939" type="static" programID="0" offset="0">
@@ -10834,22 +10831,22 @@
         <phase duration="1"  state="rrrrrrrrrrrr"/>
     </tlLogic>
     <tlLogic id="J24" type="static" programID="0" offset="0">
-        <phase duration="1"  state="urrrrrrrrrrrrrr"/>
-        <phase duration="10" state="Grrrrrrrrrrrrrr"/>
-        <phase duration="3"  state="yrrrrrrrrrrrrrr"/>
-        <phase duration="1"  state="rrrrrrrrrrrrrrr"/>
-        <phase duration="1"  state="ruurruurrrrrrrr"/>
-        <phase duration="10" state="rGGrrGGrrrrrrrr"/>
-        <phase duration="3"  state="ryyrryyrrrrrrrr"/>
-        <phase duration="1"  state="rrrrrrrrrrrrrrr"/>
-        <phase duration="1"  state="rururrurrrrrrrr"/>
-        <phase duration="10" state="rGrGrrGrrrrrrrr"/>
-        <phase duration="3"  state="ryryrryrrrrrrrr"/>
-        <phase duration="1"  state="rrrrrrrrrrrrrrr"/>
-        <phase duration="1"  state="rrrrururrrrrrrr"/>
-        <phase duration="10" state="rrrrGrGrrrrrrrr"/>
-        <phase duration="3"  state="rrrryryrrrrrrrr"/>
-        <phase duration="1"  state="rrrrrrrrrrrrrrr"/>
+        <phase duration="1"  state="urrrrrr"/>
+        <phase duration="10" state="Grrrrrr"/>
+        <phase duration="3"  state="yrrrrrr"/>
+        <phase duration="1"  state="rrrrrrr"/>
+        <phase duration="1"  state="ruurruu"/>
+        <phase duration="10" state="rGGrrGG"/>
+        <phase duration="3"  state="ryyrryy"/>
+        <phase duration="1"  state="rrrrrrr"/>
+        <phase duration="1"  state="rururru"/>
+        <phase duration="10" state="rGrGrrG"/>
+        <phase duration="3"  state="ryryrry"/>
+        <phase duration="1"  state="rrrrrrr"/>
+        <phase duration="1"  state="rrrruru"/>
+        <phase duration="10" state="rrrrGrG"/>
+        <phase duration="3"  state="rrrryry"/>
+        <phase duration="1"  state="rrrrrrr"/>
     </tlLogic>
     <tlLogic id="J25" type="static" programID="0" offset="0">
         <phase duration="1"  state="uuuuOOrurrrr"/>
@@ -10862,9 +10859,9 @@
         <phase duration="1"  state="rrrrOOrrrOOr"/>
     </tlLogic>
     <tlLogic id="J28" type="static" programID="0" offset="0">
-        <phase duration="1"  state="rrurrrruuurrr"/>
-        <phase duration="15" state="rrGrrrrGGGrrr"/>
-        <phase duration="3"  state="rryrrrryyyrrr"/>
+        <phase duration="1"  state="ruurrrruuurrr"/>
+        <phase duration="15" state="rGGrrrrGGGrrr"/>
+        <phase duration="3"  state="ryyrrrryyyrrr"/>
         <phase duration="1"  state="rrrrrrrrrrrrr"/>
         <phase duration="1"  state="rrruuurrrrrrr"/>
         <phase duration="15" state="rrrGGGrrrrrrr"/>
@@ -10988,9 +10985,9 @@
         <phase duration="25" state="GGgrrrrrrGGgrrrrr"/>
         <phase duration="3"  state="yyyrrrrrryyyrrrrr"/>
         <phase duration="1"  state="rrrrrrrrrrrrrrrrr"/>
-        <phase duration="1"  state="rrruurururrruruuu"/>
-        <phase duration="25" state="rrrGGrgrGrrrGGggG"/>
-        <phase duration="3"  state="rrryyryryrrryyyyy"/>
+        <phase duration="1"  state="rrruuuururrruuuuu"/>
+        <phase duration="25" state="rrrGGggrGrrrGGggG"/>
+        <phase duration="3"  state="rrryyyyryrrryyyyy"/>
         <phase duration="1"  state="rrrrrrrrrrrrrrrrr"/>
     </tlLogic>
     <tlLogic id="J60" type="static" programID="0" offset="0">
@@ -11024,18 +11021,22 @@
         <phase duration="1"  state="rrrrrr"/>
     </tlLogic>
     <tlLogic id="J69" type="static" programID="0" offset="0">
-        <phase duration="1"  state="rrrurrrrruurr"/>
-        <phase duration="15" state="rrrGrrrrrGGrr"/>
-        <phase duration="3"  state="rrryrrrrryyrr"/>
-        <phase duration="1"  state="rrrrrrrrrrrrr"/>
-        <phase duration="1"  state="rruruuururrrr"/>
-        <phase duration="15" state="rrGrGGGrGrrrr"/>
-        <phase duration="3"  state="rryryyyryrrrr"/>
-        <phase duration="1"  state="rrrrrrrrrrrrr"/>
-        <phase duration="1"  state="uurrrrrrrrrrr"/>
-        <phase duration="15" state="GGrrrrrrrrrrr"/>
-        <phase duration="3"  state="yyrrrrrrrrrrr"/>
-        <phase duration="1"  state="rrrrrrrrrrrrr"/>
+        <phase duration="1"  state="rrrurrrrruu"/>
+        <phase duration="10" state="rrrGrrrrrGG"/>
+        <phase duration="3"  state="rrryrrrrryy"/>
+        <phase duration="1"  state="rrrrrrrrrrr"/>
+        <phase duration="1"  state="rruruuururr"/>
+        <phase duration="10" state="rrGrGGGrGrr"/>
+        <phase duration="3"  state="rryryyyryrr"/>
+        <phase duration="1"  state="rrrrrrrrrrr"/>
+        <phase duration="1"  state="uurrrrrrrrr"/>
+        <phase duration="10" state="GGrrrrrrrrr"/>
+        <phase duration="3"  state="yyrrrrrrrrr"/>
+        <phase duration="1"  state="rrrrrrrrrrr"/>
+        <phase duration="1"  state="rrrruuuurrr"/>
+        <phase duration="10" state="rrrrGGGGrrr"/>
+        <phase duration="3"  state="rrrryyyyrrr"/>
+        <phase duration="1"  state="rrrrrrrrrrr"/>
     </tlLogic>
     <tlLogic id="J77" type="static" programID="0" offset="0">
         <phase duration="46" state="GGGgGG"/>
@@ -11176,7 +11177,7 @@
         <phase duration="1"  state="rrrrrrrrr"/>
         <phase duration="1"  state="urrruruuu"/>
         <phase duration="25" state="GrrrGrGGG"/>
-        <phase duration="3"  state="yrrrrryyy"/>
+        <phase duration="3"  state="yrrryryyy"/>
         <phase duration="1"  state="rrrrrrrrr"/>
     </tlLogic>
     <tlLogic id="cluster319830974_J60_J61" type="static" programID="0" offset="0">
@@ -11198,9 +11199,9 @@
         <phase duration="25" state="GGGrrrrrrrr"/>
         <phase duration="3"  state="yyyrrrrrrrr"/>
         <phase duration="1"  state="rrrrrrrrrrr"/>
-        <phase duration="1"  state="rrruruuuuru"/>
-        <phase duration="25" state="rrrGrgGGGrG"/>
-        <phase duration="3"  state="rrryryyyyry"/>
+        <phase duration="1"  state="rrruuuuuuuu"/>
+        <phase duration="25" state="rrrGggGGGgG"/>
+        <phase duration="3"  state="rrryyyyyyyy"/>
         <phase duration="1"  state="rrrrrrrrrrr"/>
     </tlLogic>
     <tlLogic id="clusterJ23_J24_cluster_10827082585_2275635875_316284659_34505879_#3more" type="static" programID="0" offset="0">
@@ -11256,10 +11257,10 @@
         <phase duration="15" state="grrGGGrrrr"/>
         <phase duration="3"  state="grryyyrrrr"/>
         <phase duration="1"  state="grrrrrrrrr"/>
-        <phase duration="1"  state="rrrrrrruur"/>
+        <phase duration="1"  state="grrrrrruur"/>
         <phase duration="15" state="grrrrrrGGr"/>
-        <phase duration="3"  state="grrrrrryyr"/>
-        <phase duration="1"  state="grrrrrrrrr"/>
+        <phase duration="3"  state="yrrrrrryyr"/>
+        <phase duration="1"  state="rrrrrrrrrr"/>
         <phase duration="1"  state="ruurrrurru"/>
         <phase duration="15" state="rGGrrrGrrG"/>
         <phase duration="3"  state="ryyrrryrry"/>
@@ -11307,10 +11308,10 @@
         <phase duration="1"  state="uuuuuy"/>
     </tlLogic>
     <tlLogic id="cluster_2884057682_4439392031" type="static" programID="0" offset="0">
-        <phase duration="46" state="rrGG"/>
-        <phase duration="3"  state="rryy"/>
-        <phase duration="10" state="rrrr"/>
-        <phase duration="1"  state="rruu"/>
+        <phase duration="46" state="GG"/>
+        <phase duration="3"  state="yy"/>
+        <phase duration="10" state="rr"/>
+        <phase duration="1"  state="uu"/>
     </tlLogic>
     <tlLogic id="cluster_2923898713_455535" type="static" programID="0" offset="0">
         <phase duration="1"  state="GGur"/>
@@ -16119,9 +16120,9 @@
     <connection from="-10594647#3" to="-942285773#1" fromLane="0" toLane="0" tl="GS_28961398" linkIndex="0" dir="r" state="o"/>
     <connection from="-1068811627" to="86145637#0" fromLane="0" toLane="0" dir="r" state="m"/>
     <connection from="-1068811627" to="86145636#0" fromLane="0" toLane="0" dir="l" state="m"/>
-    <connection from="-10750844#1" to="-942348910#1" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="3" dir="r" state="O"/>
-    <connection from="-10750844#1" to="-860373105#4" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="4" dir="s" state="O"/>
-    <connection from="-10750844#1" to="-860373105#4" fromLane="0" toLane="1" tl="GS_29798700" linkIndex="5" dir="s" state="O"/>
+    <connection from="-10750844#1" to="-942348910#1" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="2" dir="r" state="O"/>
+    <connection from="-10750844#1" to="-860373105#4" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="3" dir="s" state="O"/>
+    <connection from="-10750844#1" to="-860373105#4" fromLane="0" toLane="1" tl="GS_29798700" linkIndex="4" dir="s" state="O"/>
     <connection from="-1089407128#2" to="1122939439#0" fromLane="0" toLane="0" tl="GS_27256991" linkIndex="0" dir="r" state="O"/>
     <connection from="-1089407128#2" to="-15675745#2" fromLane="1" toLane="0" tl="GS_27256991" linkIndex="1" dir="s" state="O"/>
     <connection from="-1111971585#2" to="-527458585#4" fromLane="0" toLane="0" dir="s" state="M"/>
@@ -17938,8 +17939,8 @@
     <connection from="28877536#0" to="-330403834" fromLane="0" toLane="0" dir="r" state="m"/>
     <connection from="28908903#0" to="371344296#0" fromLane="0" toLane="0" tl="J78" linkIndex="5" dir="l" state="o"/>
     <connection from="28908903#0" to="371344296#0" fromLane="0" toLane="1" tl="J78" linkIndex="6" dir="l" state="o"/>
-    <connection from="289146494#0" to="1121159178#0" fromLane="0" toLane="0" tl="cluster_2884057682_4439392031" linkIndex="2" dir="s" state="O"/>
-    <connection from="289146494#0" to="1121159178#0" fromLane="0" toLane="1" tl="cluster_2884057682_4439392031" linkIndex="3" dir="s" state="O"/>
+    <connection from="289146494#0" to="1121159178#0" fromLane="0" toLane="0" tl="cluster_2884057682_4439392031" linkIndex="0" dir="s" state="O"/>
+    <connection from="289146494#0" to="1121159178#0" fromLane="0" toLane="1" tl="cluster_2884057682_4439392031" linkIndex="1" dir="s" state="O"/>
     <connection from="28951462#0" to="1111971585#0" fromLane="0" toLane="0" dir="r" state="m"/>
     <connection from="28951462#0" to="-527458585#4" fromLane="0" toLane="0" dir="l" state="m"/>
     <connection from="29058944#0" to="70748306#0" fromLane="0" toLane="0" dir="r" state="M"/>
@@ -19091,16 +19092,16 @@
     <connection from="860373105#1" to="10418558#0" fromLane="0" toLane="0" dir="r" state="M"/>
     <connection from="860373105#1" to="860373105#2" fromLane="0" toLane="0" dir="s" state="M"/>
     <connection from="860373105#1" to="860373105#2" fromLane="1" toLane="1" dir="s" state="M"/>
-    <connection from="860373105#2" to="-86145636#2" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="8" dir="r" state="O"/>
-    <connection from="860373105#2" to="10750844#0" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="9" dir="s" state="o"/>
-    <connection from="860373105#2" to="10750844#0" fromLane="1" toLane="0" tl="GS_29798700" linkIndex="10" dir="s" state="O"/>
+    <connection from="860373105#2" to="-86145636#2" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="7" dir="r" state="O"/>
+    <connection from="860373105#2" to="10750844#0" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="8" dir="s" state="o"/>
+    <connection from="860373105#2" to="10750844#0" fromLane="1" toLane="0" tl="GS_29798700" linkIndex="9" dir="s" state="O"/>
     <connection from="860373106#0" to="860373106#1" fromLane="0" toLane="0" dir="s" state="m"/>
     <connection from="860373106#0" to="-861311402#2" fromLane="0" toLane="0" dir="l" state="m"/>
     <connection from="860373106#1" to="1163547442" fromLane="0" toLane="0" dir="s" state="M"/>
     <connection from="860373106#1" to="1163547442" fromLane="0" toLane="1" dir="s" state="M"/>
     <connection from="86145635#0" to="543888898#0" fromLane="0" toLane="0" dir="s" state="M"/>
-    <connection from="86145636#0" to="10750844#0" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="6" dir="r" state="o"/>
-    <connection from="86145636#0" to="-942348910#1" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="7" dir="s" state="o"/>
+    <connection from="86145636#0" to="10750844#0" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="5" dir="r" state="o"/>
+    <connection from="86145636#0" to="-942348910#1" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="6" dir="s" state="o"/>
     <connection from="86145637#0" to="284105538" fromLane="0" toLane="0" dir="s" state="M"/>
     <connection from="86145639#0" to="31559931#0" fromLane="0" toLane="0" dir="r" state="M"/>
     <connection from="86145639#0" to="86145639#1" fromLane="0" toLane="0" dir="s" state="M"/>
@@ -19128,7 +19129,7 @@
     <connection from="942285773#0" to="544418922#0" fromLane="0" toLane="0" tl="GS_28961398" linkIndex="6" dir="s" state="O"/>
     <connection from="942285773#0" to="10594647#0" fromLane="1" toLane="0" tl="GS_28961398" linkIndex="7" dir="l" state="o"/>
     <connection from="942348910#0" to="-860373105#4" fromLane="0" toLane="0" tl="GS_29798700" linkIndex="0" dir="r" state="o"/>
-    <connection from="942348910#0" to="-86145636#2" fromLane="1" toLane="0" tl="GS_29798700" linkIndex="2" dir="s" state="o"/>
+    <connection from="942348910#0" to="-86145636#2" fromLane="1" toLane="0" tl="GS_29798700" linkIndex="1" dir="s" state="o"/>
     <connection from="95474067#0" to="4310928#0" fromLane="0" toLane="0" tl="cluster_1027201004_26114494" linkIndex="0" dir="s" state="O"/>
     <connection from="967647588#0" to="967647590#1" fromLane="0" toLane="0" dir="s" state="M"/>
     <connection from="967647588#0" to="-521669309#1" fromLane="0" toLane="0" dir="l" state="="/>

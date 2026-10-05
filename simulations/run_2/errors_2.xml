@@ -1,0 +1,21 @@
+Loading net-file from '/home/egli/Documents/SVT_research/simulation_files/merged_fixed.net.xml' ... done (438ms).
+Loading additional-files from '/home/egli/Documents/SVT_research/simulations/run_2/DODE_new2.add.xml' ... done (182ms).
+Warning: Unsafe green phase 5 in tlLogic 'GS_27256996', program '0'. Lane '-4803465#5_0' is targeted by 2 'G'-links. (use 'g' instead)
+Warning: Unsafe green phase 5 in tlLogic 'GS_48932939', program '0'. Lane '-31785331#3_0' is targeted by 2 'G'-links. (use 'g' instead)
+Warning: Unsafe green phase 5 in tlLogic 'J34', program '0'. Lane '38259359_1' is targeted by 2 'G'-links. (use 'g' instead)
+Warning: Missing green phase in tlLogic 'J58', program '0' for tl-index 7.
+Warning: Unsafe green phase 1 in tlLogic 'cluster10269959881_10269959882_2275723424_2826052941_#1more', program '0'. Lane '56081883#1_0' is targeted by 2 'G'-links. (use 'g' instead)
+Warning: Unsafe green phase 5 in tlLogic 'clusterJ29_clusterJ28_cluster2295088398_2295088405_2295088421_2295088463_#1more', program '0'. Lane '220385422#1_0' is targeted by 2 'G'-links. (use 'g' instead)
+Warning: Missing green phase in tlLogic 'clusterJ43_J44_clusterJ15_cluster26886958_J16_J18', program '0' for tl-index 0.
+Loading route-files incrementally from '/home/egli/Documents/SVT_research/simulation_files/merged.rou.xml'
+Loading done.
+Simulation started with time: 21600.00.
+Simulation ended at time: 21628.75.
+Performance:
+ Duration: 1.11s
+ Real time factor: 25.9946
+ UPS: 11418.625678
+Vehicles:
+ Inserted: 140 (Loaded: 141)
+ Running: 139
+ Waiting: 1
